@@ -1,0 +1,454 @@
+Starting program: /w/home.05/be/ugrad/khachatr/CS33/smashing_lab/sthttpd-2.27.0/src/thttpd-as -C config.txt
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+warning: File "/usr/local/cs/gcc-6.2.0/lib/libstdc++.so.6.0.22-gdb.py" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
+To enable execution of this file add
+	add-auto-load-safe-path /usr/local/cs/gcc-6.2.0/lib/libstdc++.so.6.0.22-gdb.py
+line to your configuration file "/u/be/ugrad/khachatr/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/u/be/ugrad/khachatr/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+
+Program received signal SIGSEGV, Segmentation fault.
+uw_frame_state_for (context=context@entry=0xffffb490, 
+    fs=fs@entry=0xffffb510)
+    at ../../../../gcc-6.2.0/libgcc/unwind-dw2.c:1249
+1249	../../../../gcc-6.2.0/libgcc/unwind-dw2.c: No such file or directory.
+#0  uw_frame_state_for (context=context@entry=0xffffb490, 
+    fs=fs@entry=0xffffb510)
+    at ../../../../gcc-6.2.0/libgcc/unwind-dw2.c:1249
+#1  0xf764f3f8 in _Unwind_Backtrace (
+    trace=0xf7b30330 <__sanitizer::Unwind_Trace(_Unwind_Context*, void*)>, trace_argument=0xffffb608)
+    at ../../../../gcc-6.2.0/libgcc/unwind.inc:290
+#2  0xf7b3044b in __sanitizer::BufferedStackTrace::SlowUnwindStack (
+    this=0xffffb720, pc=4155069886, max_depth=256)
+    at ../../../../../gcc-6.2.0/libsanitizer/sanitizer_common/sanitizer_unwind_linux_libcdep.cc:113
+#3  0xf7b2adb6 in __sanitizer::BufferedStackTrace::Unwind (
+    this=0xffffb720, max_depth=256, pc=4155069886, bp=4294950840, 
+    context=0x0, stack_top=4294959104, stack_bottom=4286570496, 
+    request_fast_unwind=false)
+    at ../../../../../gcc-6.2.0/libsanitizer/sanitizer_common/sanitizer_stacktrace_libcdep.cc:65
+#4  0xf7b13edb in __asan::GetStackTraceWithPcBpAndContext (
+    fast=false, context=0x0, bp=4294950840, pc=4155069886, 
+    max_depth=256, stack=0xffffb720)
+    at ../../../../../gcc-6.2.0/libsanitizer/asan/asan_stack.h:49
+#5  __asan::ReportGenericError (pc=<optimized out>, 
+    bp=<optimized out>, sp=<optimized out>, addr=<optimized out>, 
+    is_write=<optimized out>, access_size=<optimized out>, 
+    exp=<optimized out>, fatal=<optimized out>)
+    at ../../../../../gcc-6.2.0/libsanitizer/asan/asan_report.cc:1092
+#6  0xf7a955d3 in __interceptor_strchr (str=<optimized out>, 
+    c=<optimized out>)
+    at ../../../../../gcc-6.2.0/libsanitizer/asan/asan_interceptors.cc:468
+#7  0x0804eb77 in read_config (filename=<optimized out>)
+    at thttpd.c:1018
+#8  0x615f7369 in ?? ()
+#9  0x65756775 in ?? ()
+#10 0x72505f2e in ?? ()
+#11 0x65736561 in ?? ()
+#12 0x6e5f746e in ?? ()
+#13 0x65757165 in ?? ()
+#14 0x7369725f in ?? ()
+#15 0x5f2c7375 in ?? ()
+#16 0x736e6f63 in ?? ()
+#17 0x61757165 in ?? ()
+#18 0x65735f74 in ?? ()
+#19 0x6f635f64 in ?? ()
+#20 0x6c61766e in ?? ()
+Quit
+Dump of assembler code for function uw_frame_state_for:
+   0xf764dae0 <+0>:	push   %ebp
+   0xf764dae1 <+1>:	push   %edi
+   0xf764dae2 <+2>:	mov    $0x30,%ecx
+   0xf764dae7 <+7>:	push   %esi
+   0xf764dae8 <+8>:	push   %ebx
+   0xf764dae9 <+9>:	mov    %eax,%ebx
+   0xf764daeb <+11>:	call   0xf7642dac <__x86.get_pc_thunk.di>
+   0xf764daf0 <+16>:	add    $0x9510,%edi
+   0xf764daf6 <+22>:	sub    $0x3c,%esp
+   0xf764daf9 <+25>:	xor    %eax,%eax
+   0xf764dafb <+27>:	mov    %edi,0xc(%esp)
+   0xf764daff <+31>:	mov    %edx,%edi
+   0xf764db01 <+33>:	rep stos %eax,%es:(%edi)
+   0xf764db03 <+35>:	movl   $0x0,0x68(%ebx)
+   0xf764db0a <+42>:	movl   $0x0,0x50(%ebx)
+   0xf764db11 <+49>:	mov    0x4c(%ebx),%eax
+   0xf764db14 <+52>:	test   %eax,%eax
+   0xf764db16 <+54>:	je     0xf764dcd0 <uw_frame_state_for+496>
+   0xf764db1c <+60>:	mov    0x60(%ebx),%esi
+   0xf764db1f <+63>:	mov    %edx,%edi
+   0xf764db21 <+65>:	lea    0x54(%ebx),%edx
+   0xf764db24 <+68>:	mov    %ebx,0x8(%esp)
+   0xf764db28 <+72>:	sub    $0x8,%esp
+   0xf764db2b <+75>:	push   %edx
+   0xf764db2c <+76>:	mov    %esi,%edx
+   0xf764db2e <+78>:	shr    $0x1f,%edx
+   0xf764db31 <+81>:	mov    %esi,0x1c(%esp)
+   0xf764db35 <+85>:	lea    -0x1(%eax,%edx,1),%eax
+   0xf764db39 <+89>:	push   %eax
+   0xf764db3a <+90>:	mov    0x1c(%esp),%ebx
+   0xf764db3e <+94>:	call   0xf763df40 <_Unwind_Find_FDE@plt>
+   0xf764db43 <+99>:	mov    %eax,0x24(%esp)
+   0xf764db47 <+103>:	add    $0x10,%esp
+   0xf764db4a <+106>:	test   %eax,%eax
+   0xf764db4c <+108>:	mov    0x8(%esp),%eax
+   0xf764db50 <+112>:	je     0xf764dcb0 <uw_frame_state_for+464>
+   0xf764db56 <+118>:	mov    0x14(%esp),%esi
+   0xf764db5a <+122>:	mov    0x5c(%eax),%eax
+   0xf764db5d <+125>:	sub    $0xc,%esp
+   0xf764db60 <+128>:	mov    %eax,0xa4(%edi)
+   0xf764db66 <+134>:	mov    %esi,%eax
+   0xf764db68 <+136>:	add    $0x4,%eax
+   0xf764db6b <+139>:	sub    0x4(%esi),%eax
+   0xf764db6e <+142>:	mov    %eax,0x24(%esp)
+   0xf764db72 <+146>:	mov    %eax,%esi
+   0xf764db74 <+148>:	add    $0x9,%eax
+   0xf764db77 <+151>:	mov    %eax,0x1c(%esp)
+   0xf764db7b <+155>:	push   %eax
+   0xf764db7c <+156>:	mov    %eax,%ebp
+   0xf764db7e <+158>:	mov    0x1c(%esp),%ebx
+   0xf764db82 <+162>:	call   0xf763df00 <strlen@plt>
+   0xf764db87 <+167>:	add    $0x10,%esp
+   0xf764db8a <+170>:	cmpb   $0x65,0x9(%esi)
+   0xf764db8e <+174>:	lea    0x1(%ebp,%eax,1),%eax
+   0xf764db92 <+178>:	je     0xf764de40 <uw_frame_state_for+864>
+   0xf764db98 <+184>:	mov    0x18(%esp),%ecx
+   0xf764db9c <+188>:	movzbl 0x8(%ecx),%ecx
+   0xf764dba0 <+192>:	cmp    $0x3,%cl
+   0xf764dba3 <+195>:	mov    %cl,0x1c(%esp)
+   0xf764dba7 <+199>:	ja     0xf764e020 <uw_frame_state_for+1344>
+   0xf764dbad <+205>:	xor    %esi,%esi
+   0xf764dbaf <+207>:	xor    %ecx,%ecx
+   0xf764dbb1 <+209>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dbb8 <+216>:	add    $0x1,%eax
+   0xf764dbbb <+219>:	movzbl -0x1(%eax),%ebx
+   0xf764dbbf <+223>:	mov    %ebx,%edx
+   0xf764dbc1 <+225>:	and    $0x7f,%edx
+   0xf764dbc4 <+228>:	shl    %cl,%edx
+   0xf764dbc6 <+230>:	add    $0x7,%ecx
+   0xf764dbc9 <+233>:	or     %edx,%esi
+   0xf764dbcb <+235>:	test   %bl,%bl
+   0xf764dbcd <+237>:	js     0xf764dbb8 <uw_frame_state_for+216>
+   0xf764dbcf <+239>:	mov    %esi,0xb0(%edi)
+   0xf764dbd5 <+245>:	xor    %ebp,%ebp
+   0xf764dbd7 <+247>:	xor    %ecx,%ecx
+   0xf764dbd9 <+249>:	jmp    0xf764dbe2 <uw_frame_state_for+258>
+   0xf764dbdb <+251>:	nop
+   0xf764dbdc <+252>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dbe0 <+256>:	mov    %esi,%eax
+   0xf764dbe2 <+258>:	lea    0x1(%eax),%esi
+   0xf764dbe5 <+261>:	movzbl -0x1(%esi),%ebx
+   0xf764dbe9 <+265>:	mov    %ebx,%edx
+   0xf764dbeb <+267>:	and    $0x7f,%edx
+   0xf764dbee <+270>:	shl    %cl,%edx
+   0xf764dbf0 <+272>:	add    $0x7,%ecx
+   0xf764dbf3 <+275>:	or     %edx,%ebp
+   0xf764dbf5 <+277>:	test   %bl,%bl
+   0xf764dbf7 <+279>:	js     0xf764dbe0 <uw_frame_state_for+256>
+   0xf764dbf9 <+281>:	mov    %esi,%edx
+   0xf764dbfb <+283>:	cmp    $0x1f,%ecx
+   0xf764dbfe <+286>:	mov    %ebx,%esi
+   0xf764dc00 <+288>:	mov    %edx,%ebx
+   0xf764dc02 <+290>:	ja     0xf764dc0d <uw_frame_state_for+301>
+   0xf764dc04 <+292>:	and    $0x40,%esi
+   0xf764dc07 <+295>:	jne    0xf764de00 <uw_frame_state_for+800>
+   0xf764dc0d <+301>:	xor    %edx,%edx
+   0xf764dc0f <+303>:	xor    %ecx,%ecx
+   0xf764dc11 <+305>:	cmpb   $0x1,0x1c(%esp)
+   0xf764dc16 <+310>:	mov    %ebp,0xac(%edi)
+   0xf764dc1c <+316>:	mov    %edx,%esi
+   0xf764dc1e <+318>:	je     0xf764dea8 <uw_frame_state_for+968>
+   0xf764dc24 <+324>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dc28 <+328>:	add    $0x1,%ebx
+   0xf764dc2b <+331>:	movzbl -0x1(%ebx),%edx
+   0xf764dc2f <+335>:	mov    %edx,%eax
+   0xf764dc31 <+337>:	and    $0x7f,%eax
+   0xf764dc34 <+340>:	shl    %cl,%eax
+   0xf764dc36 <+342>:	add    $0x7,%ecx
+   0xf764dc39 <+345>:	or     %eax,%esi
+   0xf764dc3b <+347>:	test   %dl,%dl
+   0xf764dc3d <+349>:	js     0xf764dc28 <uw_frame_state_for+328>
+   0xf764dc3f <+351>:	mov    %esi,0xb4(%edi)
+   0xf764dc45 <+357>:	mov    0x10(%esp),%eax
+   0xf764dc49 <+361>:	movb   $0xff,0xb9(%edi)
+   0xf764dc50 <+368>:	xor    %ebp,%ebp
+   0xf764dc52 <+370>:	movzbl (%eax),%eax
+   0xf764dc55 <+373>:	cmp    $0x7a,%al
+   0xf764dc57 <+375>:	je     0xf764de68 <uw_frame_state_for+904>
+   0xf764dc5d <+381>:	mov    0x10(%esp),%esi
+   0xf764dc61 <+385>:	lea    0x2c(%esp),%ecx
+   0xf764dc65 <+389>:	mov    %ebp,0x1c(%esp)
+   0xf764dc69 <+393>:	mov    %ebx,%ebp
+   0xf764dc6b <+395>:	mov    %ecx,0x10(%esp)
+   0xf764dc6f <+399>:	add    $0x1,%esi
+   0xf764dc72 <+402>:	jmp    0xf764dc95 <uw_frame_state_for+437>
+   0xf764dc74 <+404>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dc78 <+408>:	cmp    $0x52,%al
+   0xf764dc7a <+410>:	je     0xf764dce0 <uw_frame_state_for+512>
+   0xf764dc7c <+412>:	cmp    $0x50,%al
+   0xf764dc7e <+414>:	je     0xf764dcf0 <uw_frame_state_for+528>
+   0xf764dc80 <+416>:	cmp    $0x53,%al
+   0xf764dc82 <+418>:	jne    0xf764de20 <uw_frame_state_for+832>
+   0xf764dc88 <+424>:	movb   $0x1,0xbb(%edi)
+   0xf764dc8f <+431>:	movzbl (%esi),%eax
+   0xf764dc92 <+434>:	add    $0x1,%esi
+   0xf764dc95 <+437>:	test   %al,%al
+   0xf764dc97 <+439>:	je     0xf764dd30 <uw_frame_state_for+592>
+   0xf764dc9d <+445>:	cmp    $0x4c,%al
+   0xf764dc9f <+447>:	jne    0xf764dc78 <uw_frame_state_for+408>
+   0xf764dca1 <+449>:	movzbl 0x0(%ebp),%eax
+   0xf764dca5 <+453>:	add    $0x1,%ebp
+   0xf764dca8 <+456>:	mov    %al,0xb9(%edi)
+   0xf764dcae <+462>:	jmp    0xf764dc8f <uw_frame_state_for+431>
+   0xf764dcb0 <+464>:	mov    0x48(%eax),%ecx
+   0xf764dcb3 <+467>:	mov    0x4c(%eax),%eax
+=> 0xf764dcb6 <+470>:	cmpw   $0xb858,(%eax)
+   0xf764dcbb <+475>:	je     0xf764df32 <uw_frame_state_for+1106>
+   0xf764dcc1 <+481>:	cmpb   $0xb8,(%eax)
+   0xf764dcc4 <+484>:	je     0xf764dffb <uw_frame_state_for+1307>
+   0xf764dcca <+490>:	lea    0x0(%esi),%esi
+   0xf764dcd0 <+496>:	mov    $0x5,%eax
+   0xf764dcd5 <+501>:	add    $0x3c,%esp
+   0xf764dcd8 <+504>:	pop    %ebx
+   0xf764dcd9 <+505>:	pop    %esi
+   0xf764dcda <+506>:	pop    %edi
+   0xf764dcdb <+507>:	pop    %ebp
+   0xf764dcdc <+508>:	ret    
+   0xf764dcdd <+509>:	lea    0x0(%esi),%esi
+   0xf764dce0 <+512>:	movzbl 0x0(%ebp),%eax
+   0xf764dce4 <+516>:	add    $0x1,%ebp
+   0xf764dce7 <+519>:	mov    %al,0xb8(%edi)
+   0xf764dced <+525>:	jmp    0xf764dc8f <uw_frame_state_for+431>
+   0xf764dcef <+527>:	nop
+   0xf764dcf0 <+528>:	movzbl 0x0(%ebp),%ebx
+   0xf764dcf4 <+532>:	mov    0x8(%esp),%edx
+   0xf764dcf8 <+536>:	mov    %ebx,%eax
+   0xf764dcfa <+538>:	call   0xf764d240 <base_of_encoded_value>
+   0xf764dcff <+543>:	sub    $0xc,%esp
+   0xf764dd02 <+546>:	lea    0x1(%ebp),%ecx
+   0xf764dd05 <+549>:	mov    %eax,%edx
+   0xf764dd07 <+551>:	pushl  0x1c(%esp)
+   0xf764dd0b <+555>:	mov    %ebx,%eax
+   0xf764dd0d <+557>:	call   0xf764cd20 <read_encoded_value_with_base>
+   0xf764dd12 <+562>:	mov    %eax,%ebp
+   0xf764dd14 <+564>:	mov    0x3c(%esp),%eax
+   0xf764dd18 <+568>:	add    $0x10,%esp
+   0xf764dd1b <+571>:	mov    %eax,0xa8(%edi)
+   0xf764dd21 <+577>:	jmp    0xf764dc8f <uw_frame_state_for+431>
+   0xf764dd26 <+582>:	lea    0x0(%esi),%esi
+   0xf764dd29 <+585>:	lea    0x0(%edi,%eiz,1),%edi
+   0xf764dd30 <+592>:	mov    %ebp,%ebx
+   0xf764dd32 <+594>:	mov    0x1c(%esp),%ebp
+   0xf764dd36 <+598>:	test   %ebp,%ebp
+   0xf764dd38 <+600>:	je     0xf764df03 <uw_frame_state_for+1059>
+   0xf764dd3e <+606>:	mov    0x18(%esp),%esi
+   0xf764dd42 <+610>:	sub    $0xc,%esp
+   0xf764dd45 <+613>:	mov    (%esi),%eax
+   0xf764dd47 <+615>:	push   %edi
+   0xf764dd48 <+616>:	mov    0x18(%esp),%ecx
+   0xf764dd4c <+620>:	lea    0x4(%esi,%eax,1),%edx
+   0xf764dd50 <+624>:	mov    %ebp,%eax
+   0xf764dd52 <+626>:	call   0xf764d2d0 <execute_cfa_program>
+   0xf764dd57 <+631>:	movzbl 0xb8(%edi),%eax
+   0xf764dd5e <+638>:	add    $0x10,%esp
+   0xf764dd61 <+641>:	cmp    $0xff,%al
+   0xf764dd63 <+643>:	je     0xf764df21 <uw_frame_state_for+1089>
+   0xf764dd69 <+649>:	and    $0x7,%eax
+   0xf764dd6c <+652>:	cmp    $0x2,%al
+   0xf764dd6e <+654>:	je     0xf764de0e <uw_frame_state_for+814>
+   0xf764dd74 <+660>:	jbe    0xf764df0a <uw_frame_state_for+1066>
+   0xf764dd7a <+666>:	cmp    $0x3,%al
+   0xf764dd7c <+668>:	je     0xf764df17 <uw_frame_state_for+1079>
+   0xf764dd82 <+674>:	cmp    $0x4,%al
+   0xf764dd84 <+676>:	mov    $0x18,%ebx
+   0xf764dd89 <+681>:	jne    0xf764df0e <uw_frame_state_for+1070>
+   0xf764dd8f <+687>:	add    0x14(%esp),%ebx
+   0xf764dd93 <+691>:	cmpb   $0x0,0xba(%edi)
+   0xf764dd9a <+698>:	je     0xf764dec0 <uw_frame_state_for+992>
+   0xf764dda0 <+704>:	xor    %esi,%esi
+   0xf764dda2 <+706>:	xor    %ecx,%ecx
+   0xf764dda4 <+708>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dda8 <+712>:	add    $0x1,%ebx
+   0xf764ddab <+715>:	movzbl -0x1(%ebx),%edx
+   0xf764ddaf <+719>:	mov    %edx,%eax
+   0xf764ddb1 <+721>:	and    $0x7f,%eax
+   0xf764ddb4 <+724>:	shl    %cl,%eax
+   0xf764ddb6 <+726>:	add    $0x7,%ecx
+   0xf764ddb9 <+729>:	or     %eax,%esi
+   0xf764ddbb <+731>:	test   %dl,%dl
+   0xf764ddbd <+733>:	js     0xf764dda8 <uw_frame_state_for+712>
+   0xf764ddbf <+735>:	movzbl 0xb9(%edi),%eax
+   0xf764ddc6 <+742>:	add    %ebx,%esi
+   0xf764ddc8 <+744>:	cmp    $0xff,%al
+   0xf764ddca <+746>:	jne    0xf764decd <uw_frame_state_for+1005>
+   0xf764ddd0 <+752>:	test   %esi,%esi
+   0xf764ddd2 <+754>:	cmove  %ebx,%esi
+   0xf764ddd5 <+757>:	mov    0x14(%esp),%ecx
+   0xf764ddd9 <+761>:	sub    $0xc,%esp
+   0xf764dddc <+764>:	mov    (%ecx),%eax
+   0xf764ddde <+766>:	push   %edi
+   0xf764dddf <+767>:	lea    0x4(%ecx,%eax,1),%edx
+   0xf764dde3 <+771>:	mov    0x18(%esp),%ecx
+   0xf764dde7 <+775>:	mov    %esi,%eax
+   0xf764dde9 <+777>:	call   0xf764d2d0 <execute_cfa_program>
+   0xf764ddee <+782>:	add    $0x10,%esp
+   0xf764ddf1 <+785>:	xor    %eax,%eax
+   0xf764ddf3 <+787>:	add    $0x3c,%esp
+   0xf764ddf6 <+790>:	pop    %ebx
+   0xf764ddf7 <+791>:	pop    %esi
+   0xf764ddf8 <+792>:	pop    %edi
+   0xf764ddf9 <+793>:	pop    %ebp
+   0xf764ddfa <+794>:	ret    
+   0xf764ddfb <+795>:	nop
+   0xf764ddfc <+796>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764de00 <+800>:	mov    $0xffffffff,%edx
+   0xf764de05 <+805>:	shl    %cl,%edx
+   0xf764de07 <+807>:	or     %edx,%ebp
+   0xf764de09 <+809>:	jmp    0xf764dc0d <uw_frame_state_for+301>
+   0xf764de0e <+814>:	mov    $0xc,%ebx
+   0xf764de13 <+819>:	jmp    0xf764dd8f <uw_frame_state_for+687>
+   0xf764de18 <+824>:	nop
+   0xf764de19 <+825>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764de20 <+832>:	mov    0x1c(%esp),%ebp
+   0xf764de24 <+836>:	test   %ebp,%ebp
+   0xf764de26 <+838>:	jne    0xf764dd3e <uw_frame_state_for+606>
+   0xf764de2c <+844>:	add    $0x3c,%esp
+   0xf764de2f <+847>:	mov    $0x3,%eax
+   0xf764de34 <+852>:	pop    %ebx
+   0xf764de35 <+853>:	pop    %esi
+   0xf764de36 <+854>:	pop    %edi
+   0xf764de37 <+855>:	pop    %ebp
+   0xf764de38 <+856>:	ret    
+   0xf764de39 <+857>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764de40 <+864>:	mov    0x18(%esp),%ebx
+   0xf764de44 <+868>:	cmpb   $0x68,0xa(%ebx)
+   0xf764de48 <+872>:	jne    0xf764db98 <uw_frame_state_for+184>
+   0xf764de4e <+878>:	mov    (%eax),%edx
+   0xf764de50 <+880>:	add    $0xb,%ebx
+   0xf764de53 <+883>:	add    $0x4,%eax
+   0xf764de56 <+886>:	mov    %ebx,0x10(%esp)
+   0xf764de5a <+890>:	mov    %edx,0xbc(%edi)
+   0xf764de60 <+896>:	jmp    0xf764db98 <uw_frame_state_for+184>
+   0xf764de65 <+901>:	lea    0x0(%esi),%esi
+   0xf764de68 <+904>:	xor    %esi,%esi
+   0xf764de6a <+906>:	xor    %ecx,%ecx
+   0xf764de6c <+908>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764de70 <+912>:	add    $0x1,%ebx
+   0xf764de73 <+915>:	movzbl -0x1(%ebx),%edx
+   0xf764de77 <+919>:	mov    %edx,%eax
+   0xf764de79 <+921>:	and    $0x7f,%eax
+   0xf764de7c <+924>:	shl    %cl,%eax
+   0xf764de7e <+926>:	add    $0x7,%ecx
+   0xf764de81 <+929>:	or     %eax,%esi
+   0xf764de83 <+931>:	test   %dl,%dl
+   0xf764de85 <+933>:	js     0xf764de70 <uw_frame_state_for+912>
+   0xf764de87 <+935>:	lea    (%ebx,%esi,1),%ebp
+   0xf764de8a <+938>:	mov    0x10(%esp),%esi
+   0xf764de8e <+942>:	movb   $0x1,0xba(%edi)
+   0xf764de95 <+949>:	add    $0x1,%esi
+   0xf764de98 <+952>:	movzbl (%esi),%eax
+   0xf764de9b <+955>:	mov    %esi,0x10(%esp)
+   0xf764de9f <+959>:	jmp    0xf764dc5d <uw_frame_state_for+381>
+   0xf764dea4 <+964>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dea8 <+968>:	movzbl (%ebx),%edx
+   0xf764deab <+971>:	lea    0x2(%eax),%ebx
+   0xf764deae <+974>:	mov    %edx,0xb4(%edi)
+   0xf764deb4 <+980>:	jmp    0xf764dc45 <uw_frame_state_for+357>
+   0xf764deb9 <+985>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dec0 <+992>:	movzbl 0xb9(%edi),%eax
+   0xf764dec7 <+999>:	xor    %esi,%esi
+   0xf764dec9 <+1001>:	cmp    $0xff,%al
+   0xf764decb <+1003>:	je     0xf764df2b <uw_frame_state_for+1099>
+   0xf764decd <+1005>:	mov    0x8(%esp),%edx
+   0xf764ded1 <+1009>:	movzbl %al,%ebp
+   0xf764ded4 <+1012>:	mov    %ebp,%eax
+   0xf764ded6 <+1014>:	call   0xf764d240 <base_of_encoded_value>
+   0xf764dedb <+1019>:	sub    $0xc,%esp
+   0xf764dede <+1022>:	mov    %ebx,%ecx
+   0xf764dee0 <+1024>:	lea    0x38(%esp),%edx
+   0xf764dee4 <+1028>:	push   %edx
+   0xf764dee5 <+1029>:	mov    %eax,%edx
+   0xf764dee7 <+1031>:	mov    %ebp,%eax
+   0xf764dee9 <+1033>:	call   0xf764cd20 <read_encoded_value_with_base>
+   0xf764deee <+1038>:	mov    0x18(%esp),%ecx
+   0xf764def2 <+1042>:	mov    %eax,%ebx
+   0xf764def4 <+1044>:	mov    0x3c(%esp),%eax
+   0xf764def8 <+1048>:	add    $0x10,%esp
+   0xf764defb <+1051>:	mov    %eax,0x50(%ecx)
+   0xf764defe <+1054>:	jmp    0xf764ddd0 <uw_frame_state_for+752>
+   0xf764df03 <+1059>:	mov    %ebx,%ebp
+   0xf764df05 <+1061>:	jmp    0xf764de24 <uw_frame_state_for+836>
+   0xf764df0a <+1066>:	test   %al,%al
+   0xf764df0c <+1068>:	je     0xf764df17 <uw_frame_state_for+1079>
+   0xf764df0e <+1070>:	mov    0xc(%esp),%ebx
+   0xf764df12 <+1074>:	call   0xf763dfe0 <abort@plt>
+   0xf764df17 <+1079>:	mov    $0x10,%ebx
+   0xf764df1c <+1084>:	jmp    0xf764dd8f <uw_frame_state_for+687>
+   0xf764df21 <+1089>:	mov    $0x8,%ebx
+   0xf764df26 <+1094>:	jmp    0xf764dd8f <uw_frame_state_for+687>
+   0xf764df2b <+1099>:	mov    %ebx,%esi
+   0xf764df2d <+1101>:	jmp    0xf764ddd5 <uw_frame_state_for+757>
+   0xf764df32 <+1106>:	cmpl   $0x77,0x2(%eax)
+   0xf764df36 <+1110>:	jne    0xf764dcc1 <uw_frame_state_for+481>
+   0xf764df3c <+1116>:	cmpw   $0x80cd,0x6(%eax)
+   0xf764df42 <+1122>:	jne    0xf764dcc1 <uw_frame_state_for+481>
+   0xf764df48 <+1128>:	lea    0x4(%ecx),%eax
+   0xf764df4b <+1131>:	mov    0x1c(%eax),%edx
+   0xf764df4e <+1134>:	movl   $0x1,0xa0(%edi)
+   0xf764df58 <+1144>:	movl   $0x4,0x98(%edi)
+   0xf764df62 <+1154>:	movl   $0x1,0x4(%edi)
+   0xf764df69 <+1161>:	movl   $0x1,0x1c(%edi)
+   0xf764df70 <+1168>:	movl   $0x1,0xc(%edi)
+   0xf764df77 <+1175>:	mov    %edx,%ebx
+   0xf764df79 <+1177>:	movl   $0x1,0x14(%edi)
+   0xf764df80 <+1184>:	movl   $0x1,0x34(%edi)
+   0xf764df87 <+1191>:	sub    %ecx,%ebx
+   0xf764df89 <+1193>:	lea    0x2c(%eax),%ecx
+   0xf764df8c <+1196>:	movl   $0x1,0x3c(%edi)
+   0xf764df93 <+1203>:	mov    %ebx,0x94(%edi)
+   0xf764df99 <+1209>:	movl   $0x1,0x2c(%edi)
+   0xf764dfa0 <+1216>:	sub    %edx,%ecx
+   0xf764dfa2 <+1218>:	movl   $0x1,0x44(%edi)
+   0xf764dfa9 <+1225>:	movl   $0x8,0xb4(%edi)
+   0xf764dfb3 <+1235>:	mov    %ecx,(%edi)
+   0xf764dfb5 <+1237>:	lea    0x20(%eax),%ecx
+   0xf764dfb8 <+1240>:	movb   $0x1,0xbb(%edi)
+   0xf764dfbf <+1247>:	sub    %edx,%ecx
+   0xf764dfc1 <+1249>:	mov    %ecx,0x18(%edi)
+   0xf764dfc4 <+1252>:	lea    0x28(%eax),%ecx
+   0xf764dfc7 <+1255>:	sub    %edx,%ecx
+   0xf764dfc9 <+1257>:	mov    %ecx,0x8(%edi)
+   0xf764dfcc <+1260>:	lea    0x24(%eax),%ecx
+   0xf764dfcf <+1263>:	sub    %edx,%ecx
+   0xf764dfd1 <+1265>:	mov    %ecx,0x10(%edi)
+   0xf764dfd4 <+1268>:	lea    0x14(%eax),%ecx
+   0xf764dfd7 <+1271>:	sub    %edx,%ecx
+   0xf764dfd9 <+1273>:	mov    %ecx,0x30(%edi)
+   0xf764dfdc <+1276>:	lea    0x10(%eax),%ecx
+   0xf764dfdf <+1279>:	sub    %edx,%ecx
+   0xf764dfe1 <+1281>:	mov    %ecx,0x38(%edi)
+   0xf764dfe4 <+1284>:	lea    0x18(%eax),%ecx
+   0xf764dfe7 <+1287>:	add    $0x38,%eax
+   0xf764dfea <+1290>:	sub    %edx,%eax
+   0xf764dfec <+1292>:	sub    %edx,%ecx
+   0xf764dfee <+1294>:	mov    %eax,0x40(%edi)
+   0xf764dff1 <+1297>:	xor    %eax,%eax
+   0xf764dff3 <+1299>:	mov    %ecx,0x28(%edi)
+   0xf764dff6 <+1302>:	jmp    0xf764dcd5 <uw_frame_state_for+501>
+   0xf764dffb <+1307>:	cmpl   $0xad,0x1(%eax)
+   0xf764e002 <+1314>:	jne    0xf764dcd0 <uw_frame_state_for+496>
+   0xf764e008 <+1320>:	cmpw   $0x80cd,0x5(%eax)
+   0xf764e00e <+1326>:	jne    0xf764dcd0 <uw_frame_state_for+496>
+   0xf764e014 <+1332>:	lea    0xa0(%ecx),%eax
+   0xf764e01a <+1338>:	jmp    0xf764df4b <uw_frame_state_for+1131>
+   0xf764e01f <+1343>:	nop
+   0xf764e020 <+1344>:	cmpb   $0x4,(%eax)
+   0xf764e023 <+1347>:	jne    0xf764de2c <uw_frame_state_for+844>
+   0xf764e029 <+1353>:	cmpb   $0x0,0x1(%eax)
+   0xf764e02d <+1357>:	jne    0xf764de2c <uw_frame_state_for+844>
+   0xf764e033 <+1363>:	add    $0x2,%eax
+   0xf764e036 <+1366>:	jmp    0xf764dbad <uw_frame_state_for+205>
+End of assembler dump.

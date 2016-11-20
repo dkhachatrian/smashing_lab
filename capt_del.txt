@@ -1,0 +1,8 @@
+Script started on Fri 11 Nov 2016 10:06:42 PM PST
+[?1034h[khachatr@lnxsrv07 ~/CS33/smashing_lab]
+$ this is a test[K[K[K[K[K[1P[1P[1P[1P[1P[1P[1P a[1Pa[K
+[khachatr@lnxsrv07 ~/CS33/smashing_lab]
+$ exit
+exit
+
+Script done on Fri 11 Nov 2016 10:06:57 PM PST

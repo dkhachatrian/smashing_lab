@@ -1,0 +1,250 @@
+
+
+sp
+12382
+
+as
+12383
+
+no
+12384
+
+Manually edited the two changed lines using vim
+
+Configured the build using shell command:
+./configure LDFLAGS="-Xlinker --rpath=/usr/local/cs/gcc-$(gcc -dumpversion)/lib"
+
+For some reason, after building the executable with:
+make clean && make CFLAGS='-g3 -O2 -fno-inline -fstack-protector-strong' && mv src/thttpd src/thttpd-sp
+
+and then running, the shell expected further input that wouldn't end until a keyboard interrupt (Ctrl+C) was sent.
+I have since learned that this is due to the -D(ebugging) flag, and that on a separate terminal, I can send requests to the port while the first terminal is running thttpd
+
+
+Figured out that thttpd in fact has a -C(onfigFile) setting, and that is what is meant in the spec when it says "invoke" the variant so that it crashes.
+
+The patch creates a buffer of size 100 bytes but allows for strings of up to 1000 bytes, so invoke thttpd with a configfile with string size larger than 100 bytes.
+Name this file config.txt
+
+The string for 'logfile' in config.txt was created using a Loreum Ipsum generator, then using Python to replace spaces with underscores.
+
+
+thttpd-as
+`````````
+For the AS variant in particular, the -m32 flag was needed due to it attempting to load an incorrect type of ELF class when run:
+
+make clean && make CFLAGS='-g3 -m32 -O2 -fno-inline -fsanitize=address' && mv src/thttpd src/thttpd-as
+
+Now being 32-bit, our registers are e__
+
+Running it under GDB:
+(gdb) set args -C config.txt
+
+Led to a crash with a backtrace pointing to thttpd.c:1018, and pointed to the following being the next instruction to be performed:
+=> 0xf764dcb6 <+470>:	cmpw   $0xb858,(%eax)
+
+We have:
+
+(gdb) x $eax
+0x645f7369:     Cannot access memory at address 0x645f7369
+
+0x645f7369 = "d_si" in ASCII. 
+
+# $eax, in ASCII, is "d_si". We remember that the x86-64 is little-endian, and that %rax was loaded under the assumption that the MSB of the 8-byte value was at the highest memory address.
+This means that the first character/byte is toward the end of the array, and the eighth character/byte is toward the beginning of the array.
+So we need to find "is_d" in our config.txt logfile entry. This would correspond to str[188:192] of the entire line
+
+
+uw_frame_state_for (context=context@entry=0xffffb490, fs=fs@entry=0xffffb510) 
+
+As the name implies, this function checks the current stack frame by loading pieces of the stack into registers and performing various dereferencing and comparison tests.
+Pulling out some choice sections of the machine code:
+
+   0xf764db4a <+106>:	test   %eax,%eax
+   0xf764db4c <+108>:	mov    0x8(%esp),%eax     # 0x8(%esp) === 0x0
+   0xf764db50 <+112>:	je     0xf764dcb0 <uw_frame_state_for+464>
+   0xf764dcb0 <+464>:	mov    0x48(%eax),%ecx
+   0xf764dcb3 <+467>:	mov    0x4c(%eax),%eax
+=> 0xf764dcb6 <+470>:	cmpw   $0xb858,(%eax)
+[...]
+
+The function continues comparing values in what was in the stack to specific values (supposedly not meant to be touched), checking that addresses can be dereferenced; but due to stack-smashing attempts, conditions are not met as expected and eventually an error signal is propagated.
+
+
+Unfortunately, thttpd-as seems to be riddled with problems:
+=================================================================
+==4353==ERROR: AddressSanitizer: stack-buffer-overflow on address 0xffffc064 at pc 0xf7a955be bp 0xffffbfb8 sp 0xffffbb90
+READ of size 926 at 0xffffc064 thread T0
+
+Program received signal SIGSEGV, Segmentation fault.
+uw_frame_state_for (context=context@entry=0xffffb490,
+    fs=fs@entry=0xffffb510)
+    at ../../../../gcc-6.2.0/libgcc/unwind-dw2.c:1249
+1249    ../../../../gcc-6.2.0/libgcc/unwind-dw2.c: No such file or directory.
+==================================================================
+
+However, from perusing the assembly code, it hopefully doesn't affect our analysis.
+
+
+
+
+
+thttpd-sp
+`````````
+
+Backtrace for thttpd-sp is in thttpd-sp_dump_gdb.txt
+This points to thttpd.c:1190, the end of the read_config function.
+
+Running the program until this line through GDB:
+(gdb) break thttpd.c:1190
+(gdb) set args -C config.txt
+
+ leads us to:
+
+Breakpoint 2, read_config (filename=<optimized out>) at thttpd.c:1190
+1190        }
+(gdb) display/5i $rip
+1: x/5i $rip
+=> 0x404f23 <read_config+1219>: mov    0x68(%rsp),%rax
+   0x404f28 <read_config+1224>: xor    %fs:0x28,%rax
+   0x404f31 <read_config+1233>: jne    0x405051 <read_config+1521>
+   0x404f37 <read_config+1239>: add    $0x70,%rsp
+   0x404f3b <read_config+1243>: pop    %rbx
+2: /x $rax = 0x75655f7265676500
+
+# $rax, in ASCII, is "ue_rege". We remember that the x86-64 is little-endian, and that %rax was loaded under the assumption that the MSB of the 8-byte value was at the highest memory address.
+This means that the first character/byte is toward the end of the array, and the eighth character/byte is toward the beginning of the array.
+So we need to find "eger_eu" in our config.txt logfile entry. This would correspond to str[105] of the entire line
+
+The jump goes through, and leads us to
+
+=> 0x405051 <read_config+1521>: callq  0x4024b0 <__stack_chk_fail@plt>
+
+which calls various functions leading to a raised exception and crashed program.
+
+It's worth noting that %fs:0x28 is our canary value; it was stored in the buffer of the stackframe earlier in the function's assembly code:
+
+   0x0000000000404a74 <+20>:	mov    %fs:0x28,%rax
+   0x0000000000404a7d <+29>:	mov    %rax,0x68(%rsp)
+
+
+The canary was placed at 0x68(rsp) === 104 bytes above rsp, which would have pointed to the first byte of our string. Stripping the '=' from the string leads us to it loading our original str[105] as the 105th byte on the stack.
+
+
+
+
+thttpd-no
+`````````
+This variant of thttpd gave a simple backtrace when crashed using my config.txt:
+
+#0  0x0000000000404d9f in read_config (filename=<optimized out>)
+    at thttpd.c:1190
+
+It crashed when attempting to return:
+
+   0x0000000000404d9b <+1211>:	pop    %r13
+   0x0000000000404d9d <+1213>:	pop    %r14
+=> 0x0000000000404d9f <+1215>:	retq   
+
+This would be because it attempted to put the value at the memory address of %rsp into %rip; this return address had been overwritten by fgets reading in my config.txt:
+
+$rsp = 0x5f716e75 // 0x5f716e75 === "_qnu"
+
+As explained previously, we should invert the order and search for "unq_" in our config.txt
+This corresponds to str[152:156]
+
+
+handle_read analysis
+````````````````````
+The suggestion to obtain handle_read as stated in the spec did not work, so a manual overwrite of the instruction pointer using "set $rip = [address of handle_read]" followed by a "disassemble" was needed to obtain the assembly code.
+
+The AS variant loads in their arguments and ensures they follow certain patterns (as evidenced by many 'cmp' and 'test' instructions). Assumably, the address sanitizer complains when purported address values do not follow expected values -- like it attempting to jump outside a particular function when not expected, as can be checked by shr and comparing bits, tested below:
+
+   0x08051c97 <+1015>:	shr    $0x3,%edx
+   0x08051c9a <+1018>:	movzbl 0x20000000(%edx),%ecx
+   0x08051ca1 <+1025>:	mov    %eax,%edx
+   0x08051ca3 <+1027>:	and    $0x7,%edx
+   0x08051ca6 <+1030>:	add    $0x3,%edx
+   0x08051ca9 <+1033>:	cmp    %cl,%dl
+   0x08051cab <+1035>:	jl     0x8051cb5 <handle_read+1045>
+   [...]
+
+The SP and NO variants look similar, and don't seem to do anything special to prevent buffer_overrun exploits in handle_read.
+
+(I'm still not entirely sure why we've been instructed to look into handle_read, as it doesn't seem related to the potential exploit location in any meaningful way...)
+
+
+
+Let's try to be a 1337 h4x0r
+````````````````````````````
+Goal with exploit is to perform a system call to 'unlink', which is at usr/local/cs/bin/unlink
+
+To try and figure out where 'unlink' is located in the OS memory (which should stay the same, assuming the SEASNet servers aren't rebooted), I created a simple C file 'unlinker.c', made to remove/unlink 'target.txt' from the same working directory.
+
+Want to change the return address at the bottom of the get_config stackframe to instead go to unlink.
+
+
+The general structure will be to set up a string such that, when read in by the program:
+
+1) the return address is corrupted to within the stack to some code to be executed
+
+2) When executing the stack code:
+	a) %rdi will have loaded into it, a pointer to the start of a C-string "target.txt" (with nullbyte) (probably stored in the stack)
+	b) a call to unlink is performed (which, being part of the operating system, should always be available)
+
+
+
+I used the following website to disassemble instructions of interest:
+https://defuse.ca/online-x86-assembler.htm#disassembly
+
+http://ref.x86asm.net/coder64.html
+
+http://wiki.osdev.org/X86-64_Instruction_Encoding#Registers
+
+
+At the start of read_config,
+rsp = 0x7fffffffd098
+
+And ends up reading str[152:156] as the return address.
+152 = 0x98
+
+So our "base" stack address is 0x7fffffffd000
+
+
+Dump of assembler code for function main:
+=> 0x0000000000400430 <+0>:     sub    $0x8,%rsp
+   0x0000000000400434 <+4>:     mov    $0x4005d4,%edi
+   0x0000000000400439 <+9>:     callq  0x400400 <unlink@plt>
+   0x000000000040043e <+14>:    xor    %eax,%eax
+   0x0000000000400440 <+16>:    add    $0x8,%rsp
+   0x0000000000400444 <+20>:    retq
+End of assembler dump.
+
+
+What's important is we now know the location of 'unlink' in the current instance of lnxsrv07 (where I'm running all my code). Since 'unlink' is an OS-related function, it shouldn't move its location in memory unless the SEASNet server restarts.
+
+
+Now we just need to structure a string starting with "logfile=" with a return address at, say, 0x7fffffffd120; then inject the location of the C-string "target.txt" (which will be at the end of the injected code due to the terminating nullbyte), and call unlink.
+
+Because I couldn't seem to figure out how to movq 64-bit wide literals into registers (couldn't find binary that would represent 'movq'), I made "target.txt" immediately past the return address location and simply performed
+movq %rsp, %rdi
+
+...
+
+Sadly, I believe our attempts at hijacking the program have come to an end. Our only method of injecting code is through the config file, whose entries are read as C-strings, aka a char array.
+In order to send the instruction pointer to the overflowed buffer (which is the only place we are able to write into before taking control), we need to replace the return address there [%rsp = 0x7fffffffd000, ($rsp) = 0x004051df] with the overflowed buffer [0x7fffffffd000, or thereabouts].
+
+(gdb) x $rsp
+0x7fffffffd088: 0x004051df
+(gdb) x $rsp+0x8
+0x7fffffffd090: 0x00000018
+
+...However, the location of the stack causes an issue. The ASCII encoding for 0x7f is the DELETE character, which has no graphical representation and cannot be stored into a string (as the act of "typing" a DELETE character is immediately interpreted to remove the character preceding the currently selected location). There doesn't happen to be a 0x7f sitting at 0xc($rsp) either, so we didn't luck out in that respect.
+Since we have no way of making the program jump directly to our stack, there is no (simple) way of taking control of the program.
+
+If the stack were located in a location whose bytes are inputtable into a C-string (so if it contained basically anything but 0x7f), the return address could be overwritten into the stack and things would work out just peachy.
+
+
+So in the end, we don't get to be a 1337 h4x0r :'(
+
+-DK

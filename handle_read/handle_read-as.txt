@@ -1,0 +1,853 @@
+Breakpoint 1 at 0x80518a0: file thttpd.c, line 1586.
+Starting program: /w/home.05/be/ugrad/khachatr/CS33/smashing_lab/sthttpd-2.27.0/src/thttpd-as -C config.txt
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+warning: File "/usr/local/cs/gcc-6.2.0/lib/libstdc++.so.6.0.22-gdb.py" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
+To enable execution of this file add
+	add-auto-load-safe-path /usr/local/cs/gcc-6.2.0/lib/libstdc++.so.6.0.22-gdb.py
+line to your configuration file "/u/be/ugrad/khachatr/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/u/be/ugrad/khachatr/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+
+Program received signal SIGSEGV, Segmentation fault.
+uw_frame_state_for (context=context@entry=0xffffb4a0, 
+    fs=fs@entry=0xffffb520)
+    at ../../../../gcc-6.2.0/libgcc/unwind-dw2.c:1249
+1249	../../../../gcc-6.2.0/libgcc/unwind-dw2.c: No such file or directory.
+eax            0x645f7369	1683977065
+ecx            0xffffc0d0	-16176
+edx            0x0	0
+ebx            0xf7657000	-144347136
+esp            0xffffb450	0xffffb450
+ebp            0xffffb5f8	0xffffb5f8
+esi            0x40000000	1073741824
+edi            0xffffb520	-19168
+eip            0xf764dcb6	0xf764dcb6 <uw_frame_state_for+470>
+eflags         0x10246	[ PF ZF IF RF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+eax            0x645f7369	1683977065
+ecx            0xffffc0d0	-16176
+edx            0x0	0
+ebx            0xf7657000	-144347136
+esp            0xffffb450	0xffffb450
+ebp            0xffffb5f8	0xffffb5f8
+esi            0x40000000	1073741824
+edi            0xffffb520	-19168
+eip            0x80518a0	0x80518a0 <handle_read>
+eflags         0x10246	[ PF ZF IF RF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+Dump of assembler code for function handle_read:
+=> 0x080518a0 <+0>:	push   %ebp
+   0x080518a1 <+1>:	push   %edi
+   0x080518a2 <+2>:	mov    %eax,%edi
+   0x080518a4 <+4>:	push   %esi
+   0x080518a5 <+5>:	push   %ebx
+   0x080518a6 <+6>:	sub    $0x2c,%esp
+   0x080518a9 <+9>:	mov    %edx,0xc(%esp)
+   0x080518ad <+13>:	lea    0x8(%eax),%edx
+   0x080518b0 <+16>:	mov    %edx,%eax
+   0x080518b2 <+18>:	shr    $0x3,%eax
+   0x080518b5 <+21>:	movzbl 0x20000000(%eax),%ecx
+   0x080518bc <+28>:	mov    %edx,%eax
+   0x080518be <+30>:	and    $0x7,%eax
+   0x080518c1 <+33>:	add    $0x3,%eax
+   0x080518c4 <+36>:	cmp    %cl,%al
+   0x080518c6 <+38>:	jl     0x80518d0 <handle_read+48>
+   0x080518c8 <+40>:	test   %cl,%cl
+   0x080518ca <+42>:	jne    0x8052024 <handle_read+1924>
+   0x080518d0 <+48>:	mov    0x8(%edi),%ebx
+   0x080518d3 <+51>:	lea    0x90(%ebx),%esi
+   0x080518d9 <+57>:	mov    %esi,%eax
+   0x080518db <+59>:	shr    $0x3,%eax
+   0x080518de <+62>:	movzbl 0x20000000(%eax),%edx
+   0x080518e5 <+69>:	mov    %esi,%eax
+   0x080518e7 <+71>:	and    $0x7,%eax
+   0x080518ea <+74>:	add    $0x3,%eax
+   0x080518ed <+77>:	cmp    %dl,%al
+   0x080518ef <+79>:	jl     0x80518f9 <handle_read+89>
+   0x080518f1 <+81>:	test   %dl,%dl
+   0x080518f3 <+83>:	jne    0x805201b <handle_read+1915>
+   0x080518f9 <+89>:	lea    0x8c(%ebx),%ebp
+   0x080518ff <+95>:	mov    0x90(%ebx),%edx
+   0x08051905 <+101>:	mov    %ebp,%eax
+   0x08051907 <+103>:	shr    $0x3,%eax
+   0x0805190a <+106>:	movzbl 0x20000000(%eax),%ecx
+   0x08051911 <+113>:	mov    %ebp,%eax
+   0x08051913 <+115>:	and    $0x7,%eax
+   0x08051916 <+118>:	add    $0x3,%eax
+   0x08051919 <+121>:	cmp    %cl,%al
+   0x0805191b <+123>:	jl     0x8051925 <handle_read+133>
+   0x0805191d <+125>:	test   %cl,%cl
+   0x0805191f <+127>:	jne    0x8052012 <handle_read+1906>
+   0x08051925 <+133>:	mov    0x8c(%ebx),%eax
+   0x0805192b <+139>:	cmp    %eax,%edx
+   0x0805192d <+141>:	jb     0x8051c80 <handle_read+992>
+   0x08051933 <+147>:	cmp    $0x1388,%eax
+   0x08051938 <+152>:	jbe    0x80519c0 <handle_read+288>
+   0x0805193e <+158>:	mov    $0x8082700,%eax
+   0x08051943 <+163>:	mov    %eax,%edx
+   0x08051945 <+165>:	and    $0x7,%eax
+   0x08051948 <+168>:	shr    $0x3,%edx
+   0x0805194b <+171>:	add    $0x3,%eax
+   0x0805194e <+174>:	movzbl 0x20000000(%edx),%edx
+   0x08051955 <+181>:	cmp    %dl,%al
+   0x08051957 <+183>:	jl     0x8051961 <handle_read+193>
+   0x08051959 <+185>:	test   %dl,%dl
+   0x0805195b <+187>:	jne    0x8052036 <handle_read+1942>
+   0x08051961 <+193>:	mov    $0x8082740,%eax
+   0x08051966 <+198>:	mov    0x8082700,%ecx
+   0x0805196c <+204>:	mov    %eax,%edx
+   0x0805196e <+206>:	and    $0x7,%eax
+   0x08051971 <+209>:	shr    $0x3,%edx
+   0x08051974 <+212>:	add    $0x3,%eax
+   0x08051977 <+215>:	movzbl 0x20000000(%edx),%edx
+   0x0805197e <+222>:	cmp    %dl,%al
+   0x08051980 <+224>:	jl     0x805198a <handle_read+234>
+   0x08051982 <+226>:	test   %dl,%dl
+   0x08051984 <+228>:	jne    0x8052043 <handle_read+1955>
+   0x0805198a <+234>:	sub    $0x8,%esp
+   0x0805198d <+237>:	push   $0x8067c60
+   0x08051992 <+242>:	push   %ecx
+   0x08051993 <+243>:	push   $0x8067c60
+   0x08051998 <+248>:	pushl  0x8082740
+   0x0805199e <+254>:	push   $0x190
+   0x080519a3 <+259>:	push   %ebx
+   0x080519a4 <+260>:	call   0x8059660 <httpd_send_err>
+   0x080519a9 <+265>:	mov    0x2c(%esp),%edx
+   0x080519ad <+269>:	mov    %edi,%eax
+   0x080519af <+271>:	add    $0x4c,%esp
+   0x080519b2 <+274>:	pop    %ebx
+   0x080519b3 <+275>:	pop    %esi
+   0x080519b4 <+276>:	pop    %edi
+   0x080519b5 <+277>:	pop    %ebp
+   0x080519b6 <+278>:	jmp    0x8051850 <finish_connection>
+   0x080519bb <+283>:	nop
+   0x080519bc <+284>:	lea    0x0(%esi,%eiz,1),%esi
+   0x080519c0 <+288>:	sub    $0x4,%esp
+   0x080519c3 <+291>:	add    $0x3e8,%eax
+   0x080519c8 <+296>:	push   %eax
+   0x080519c9 <+297>:	lea    0x88(%ebx),%eax
+   0x080519cf <+303>:	push   %ebp
+   0x080519d0 <+304>:	mov    %eax,0x1c(%esp)
+   0x080519d4 <+308>:	push   %eax
+   0x080519d5 <+309>:	call   0x8056820 <httpd_realloc_str>
+   0x080519da <+314>:	mov    %ebp,%eax
+   0x080519dc <+316>:	add    $0x10,%esp
+   0x080519df <+319>:	shr    $0x3,%eax
+   0x080519e2 <+322>:	movzbl 0x20000000(%eax),%edx
+   0x080519e9 <+329>:	mov    %ebp,%eax
+   0x080519eb <+331>:	and    $0x7,%eax
+   0x080519ee <+334>:	add    $0x3,%eax
+   0x080519f1 <+337>:	cmp    %dl,%al
+   0x080519f3 <+339>:	jl     0x80519fd <handle_read+349>
+   0x080519f5 <+341>:	test   %dl,%dl
+   0x080519f7 <+343>:	jne    0x805202d <handle_read+1933>
+   0x080519fd <+349>:	mov    %esi,%edx
+   0x080519ff <+351>:	mov    0x8c(%ebx),%eax
+   0x08051a05 <+357>:	shr    $0x3,%edx
+   0x08051a08 <+360>:	movzbl 0x20000000(%edx),%ecx
+   0x08051a0f <+367>:	mov    %esi,%edx
+   0x08051a11 <+369>:	and    $0x7,%edx
+   0x08051a14 <+372>:	add    $0x3,%edx
+   0x08051a17 <+375>:	cmp    %cl,%dl
+   0x08051a19 <+377>:	jl     0x8051a23 <handle_read+387>
+   0x08051a1b <+379>:	test   %cl,%cl
+   0x08051a1d <+381>:	jne    0x8052077 <handle_read+2007>
+   0x08051a23 <+387>:	mov    0x90(%ebx),%edx
+   0x08051a29 <+393>:	sub    %edx,%eax
+   0x08051a2b <+395>:	mov    %eax,0x14(%esp)
+   0x08051a2f <+399>:	mov    0x10(%esp),%eax
+   0x08051a33 <+403>:	mov    %eax,%ecx
+   0x08051a35 <+405>:	shr    $0x3,%ecx
+   0x08051a38 <+408>:	movzbl 0x20000000(%ecx),%ebp
+   0x08051a3f <+415>:	mov    %eax,%ecx
+   0x08051a41 <+417>:	and    $0x7,%ecx
+   0x08051a44 <+420>:	add    $0x3,%ecx
+   0x08051a47 <+423>:	mov    %ebp,%eax
+   0x08051a49 <+425>:	cmp    %al,%cl
+   0x08051a4b <+427>:	jl     0x8051a55 <handle_read+437>
+   0x08051a4d <+429>:	test   %al,%al
+   0x08051a4f <+431>:	jne    0x80522fc <handle_read+2652>
+   0x08051a55 <+437>:	add    0x88(%ebx),%edx
+   0x08051a5b <+443>:	lea    0x1c0(%ebx),%ebp
+   0x08051a61 <+449>:	mov    %ebp,%ecx
+   0x08051a63 <+451>:	and    $0x7,%ecx
+   0x08051a66 <+454>:	mov    %edx,%eax
+   0x08051a68 <+456>:	mov    %ebp,%edx
+   0x08051a6a <+458>:	add    $0x3,%ecx
+   0x08051a6d <+461>:	shr    $0x3,%edx
+   0x08051a70 <+464>:	movzbl 0x20000000(%edx),%edx
+   0x08051a77 <+471>:	cmp    %dl,%cl
+   0x08051a79 <+473>:	jl     0x8051a83 <handle_read+483>
+   0x08051a7b <+475>:	test   %dl,%dl
+   0x08051a7d <+477>:	jne    0x8052339 <handle_read+2713>
+   0x08051a83 <+483>:	sub    $0x4,%esp
+   0x08051a86 <+486>:	pushl  0x18(%esp)
+   0x08051a8a <+490>:	push   %eax
+   0x08051a8b <+491>:	pushl  0x1c0(%ebx)
+   0x08051a91 <+497>:	call   0x804a040 <read@plt>
+   0x08051a96 <+502>:	add    $0x10,%esp
+   0x08051a99 <+505>:	test   %eax,%eax
+   0x08051a9b <+507>:	je     0x8051d70 <handle_read+1232>
+   0x08051aa1 <+513>:	js     0x8051c90 <handle_read+1008>
+   0x08051aa7 <+519>:	mov    %esi,%edx
+   0x08051aa9 <+521>:	shr    $0x3,%edx
+   0x08051aac <+524>:	movzbl 0x20000000(%edx),%ecx
+   0x08051ab3 <+531>:	mov    %esi,%edx
+   0x08051ab5 <+533>:	and    $0x7,%edx
+   0x08051ab8 <+536>:	add    $0x3,%edx
+   0x08051abb <+539>:	cmp    %cl,%dl
+   0x08051abd <+541>:	jl     0x8051ac7 <handle_read+551>
+   0x08051abf <+543>:	test   %cl,%cl
+   0x08051ac1 <+545>:	jne    0x8052059 <handle_read+1977>
+   0x08051ac7 <+551>:	mov    0xc(%esp),%esi
+   0x08051acb <+555>:	add    %eax,0x90(%ebx)
+   0x08051ad1 <+561>:	mov    %esi,%eax
+   0x08051ad3 <+563>:	shr    $0x3,%eax
+   0x08051ad6 <+566>:	movzbl 0x20000000(%eax),%edx
+   0x08051add <+573>:	mov    %esi,%eax
+   0x08051adf <+575>:	and    $0x7,%eax
+   0x08051ae2 <+578>:	add    $0x3,%eax
+   0x08051ae5 <+581>:	cmp    %dl,%al
+   0x08051ae7 <+583>:	jl     0x8051af1 <handle_read+593>
+   0x08051ae9 <+585>:	test   %dl,%dl
+   0x08051aeb <+587>:	jne    0x8052062 <handle_read+1986>
+   0x08051af1 <+593>:	mov    0xc(%esp),%eax
+   0x08051af5 <+597>:	lea    0x44(%edi),%edx
+   0x08051af8 <+600>:	mov    (%eax),%esi
+   0x08051afa <+602>:	mov    %edx,%eax
+   0x08051afc <+604>:	shr    $0x3,%eax
+   0x08051aff <+607>:	movzbl 0x20000000(%eax),%ecx
+   0x08051b06 <+614>:	mov    %edx,%eax
+   0x08051b08 <+616>:	and    $0x7,%eax
+   0x08051b0b <+619>:	add    $0x3,%eax
+   0x08051b0e <+622>:	cmp    %cl,%al
+   0x08051b10 <+624>:	jl     0x8051b1a <handle_read+634>
+   0x08051b12 <+626>:	test   %cl,%cl
+   0x08051b14 <+628>:	jne    0x805206e <handle_read+1998>
+   0x08051b1a <+634>:	sub    $0xc,%esp
+   0x08051b1d <+637>:	mov    %esi,0x44(%edi)
+   0x08051b20 <+640>:	push   %ebx
+   0x08051b21 <+641>:	call   0x805adb0 <httpd_got_request>
+   0x08051b26 <+646>:	add    $0x10,%esp
+   0x08051b29 <+649>:	test   %eax,%eax
+   0x08051b2b <+651>:	je     0x8051c75 <handle_read+981>
+   0x08051b31 <+657>:	cmp    $0x2,%eax
+   0x08051b34 <+660>:	jne    0x8051dd0 <handle_read+1328>
+   0x08051b3a <+666>:	mov    $0x8082700,%eax
+   0x08051b3f <+671>:	mov    %eax,%edx
+   0x08051b41 <+673>:	and    $0x7,%eax
+   0x08051b44 <+676>:	shr    $0x3,%edx
+   0x08051b47 <+679>:	add    $0x3,%eax
+   0x08051b4a <+682>:	movzbl 0x20000000(%edx),%edx
+   0x08051b51 <+689>:	cmp    %dl,%al
+   0x08051b53 <+691>:	jl     0x8051cf0 <handle_read+1104>
+   0x08051b59 <+697>:	test   %dl,%dl
+   0x08051b5b <+699>:	je     0x8051cf0 <handle_read+1104>
+   0x08051b61 <+705>:	sub    $0xc,%esp
+   0x08051b64 <+708>:	push   $0x8082700
+   0x08051b69 <+713>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08051b6e <+718>:	xchg   %ax,%ax
+   0x08051b70 <+720>:	mov    %edi,%eax
+   0x08051b72 <+722>:	shr    $0x3,%eax
+   0x08051b75 <+725>:	movzbl 0x20000000(%eax),%edx
+   0x08051b7c <+732>:	mov    %edi,%eax
+   0x08051b7e <+734>:	and    $0x7,%eax
+   0x08051b81 <+737>:	add    $0x3,%eax
+   0x08051b84 <+740>:	cmp    %dl,%al
+   0x08051b86 <+742>:	jl     0x8051b90 <handle_read+752>
+   0x08051b88 <+744>:	test   %dl,%dl
+   0x08051b8a <+746>:	jne    0x80522c3 <handle_read+2595>
+   0x08051b90 <+752>:	mov    0xc(%esp),%esi
+   0x08051b94 <+756>:	movl   $0x2,(%edi)
+   0x08051b9a <+762>:	mov    %esi,%eax
+   0x08051b9c <+764>:	shr    $0x3,%eax
+   0x08051b9f <+767>:	movzbl 0x20000000(%eax),%edx
+   0x08051ba6 <+774>:	mov    %esi,%eax
+   0x08051ba8 <+776>:	and    $0x7,%eax
+   0x08051bab <+779>:	add    $0x3,%eax
+   0x08051bae <+782>:	cmp    %dl,%al
+   0x08051bb0 <+784>:	jl     0x8051bba <handle_read+794>
+   0x08051bb2 <+786>:	test   %dl,%dl
+   0x08051bb4 <+788>:	jne    0x80522cc <handle_read+2604>
+   0x08051bba <+794>:	mov    0xc(%esp),%eax
+   0x08051bbe <+798>:	lea    0x40(%edi),%edx
+   0x08051bc1 <+801>:	mov    (%eax),%esi
+   0x08051bc3 <+803>:	mov    %edx,%eax
+   0x08051bc5 <+805>:	shr    $0x3,%eax
+   0x08051bc8 <+808>:	movzbl 0x20000000(%eax),%ecx
+   0x08051bcf <+815>:	mov    %edx,%eax
+   0x08051bd1 <+817>:	and    $0x7,%eax
+   0x08051bd4 <+820>:	add    $0x3,%eax
+   0x08051bd7 <+823>:	cmp    %cl,%al
+   0x08051bd9 <+825>:	jl     0x8051be3 <handle_read+835>
+   0x08051bdb <+827>:	test   %cl,%cl
+   0x08051bdd <+829>:	jne    0x80522d8 <handle_read+2616>
+   0x08051be3 <+835>:	lea    0x50(%edi),%edx
+   0x08051be6 <+838>:	mov    %esi,0x40(%edi)
+   0x08051be9 <+841>:	mov    %edx,%eax
+   0x08051beb <+843>:	shr    $0x3,%eax
+   0x08051bee <+846>:	movzbl 0x20000000(%eax),%ecx
+   0x08051bf5 <+853>:	mov    %edx,%eax
+   0x08051bf7 <+855>:	and    $0x7,%eax
+   0x08051bfa <+858>:	add    $0x3,%eax
+   0x08051bfd <+861>:	cmp    %cl,%al
+   0x08051bff <+863>:	jl     0x8051c09 <handle_read+873>
+   0x08051c01 <+865>:	test   %cl,%cl
+   0x08051c03 <+867>:	jne    0x80522e1 <handle_read+2625>
+   0x08051c09 <+873>:	mov    %ebp,%eax
+   0x08051c0b <+875>:	movl   $0x0,0x50(%edi)
+   0x08051c12 <+882>:	shr    $0x3,%eax
+   0x08051c15 <+885>:	movzbl 0x20000000(%eax),%edx
+   0x08051c1c <+892>:	mov    %ebp,%eax
+   0x08051c1e <+894>:	and    $0x7,%eax
+   0x08051c21 <+897>:	add    $0x3,%eax
+   0x08051c24 <+900>:	cmp    %dl,%al
+   0x08051c26 <+902>:	jl     0x8051c30 <handle_read+912>
+   0x08051c28 <+904>:	test   %dl,%dl
+   0x08051c2a <+906>:	jne    0x80522ea <handle_read+2634>
+   0x08051c30 <+912>:	sub    $0xc,%esp
+   0x08051c33 <+915>:	pushl  0x1c0(%ebx)
+   0x08051c39 <+921>:	call   0x8054370 <fdwatch_del_fd>
+   0x08051c3e <+926>:	mov    %ebp,%eax
+   0x08051c40 <+928>:	add    $0x10,%esp
+   0x08051c43 <+931>:	shr    $0x3,%eax
+   0x08051c46 <+934>:	movzbl 0x20000000(%eax),%edx
+   0x08051c4d <+941>:	mov    %ebp,%eax
+   0x08051c4f <+943>:	and    $0x7,%eax
+   0x08051c52 <+946>:	add    $0x3,%eax
+   0x08051c55 <+949>:	cmp    %dl,%al
+   0x08051c57 <+951>:	jl     0x8051c61 <handle_read+961>
+   0x08051c59 <+953>:	test   %dl,%dl
+   0x08051c5b <+955>:	jne    0x80522f3 <handle_read+2643>
+   0x08051c61 <+961>:	sub    $0x4,%esp
+   0x08051c64 <+964>:	push   $0x1
+   0x08051c66 <+966>:	push   %edi
+   0x08051c67 <+967>:	pushl  0x1c0(%ebx)
+   0x08051c6d <+973>:	call   0x8054270 <fdwatch_add_fd>
+   0x08051c72 <+978>:	add    $0x10,%esp
+   0x08051c75 <+981>:	add    $0x2c,%esp
+   0x08051c78 <+984>:	pop    %ebx
+   0x08051c79 <+985>:	pop    %esi
+   0x08051c7a <+986>:	pop    %edi
+   0x08051c7b <+987>:	pop    %ebp
+   0x08051c7c <+988>:	ret    
+   0x08051c7d <+989>:	lea    0x0(%esi),%esi
+   0x08051c80 <+992>:	lea    0x88(%ebx),%ecx
+   0x08051c86 <+998>:	mov    %ecx,0x10(%esp)
+   0x08051c8a <+1002>:	jmp    0x8051a29 <handle_read+393>
+   0x08051c8f <+1007>:	nop
+   0x08051c90 <+1008>:	call   0x804a020 <__errno_location@plt>
+   0x08051c95 <+1013>:	mov    %eax,%edx
+   0x08051c97 <+1015>:	shr    $0x3,%edx
+   0x08051c9a <+1018>:	movzbl 0x20000000(%edx),%ecx
+   0x08051ca1 <+1025>:	mov    %eax,%edx
+   0x08051ca3 <+1027>:	and    $0x7,%edx
+   0x08051ca6 <+1030>:	add    $0x3,%edx
+   0x08051ca9 <+1033>:	cmp    %cl,%dl
+   0x08051cab <+1035>:	jl     0x8051cb5 <handle_read+1045>
+   0x08051cad <+1037>:	test   %cl,%cl
+   0x08051caf <+1039>:	jne    0x8052050 <handle_read+1968>
+   0x08051cb5 <+1045>:	mov    (%eax),%eax
+   0x08051cb7 <+1047>:	cmp    $0x4,%eax
+   0x08051cba <+1050>:	je     0x8051c75 <handle_read+981>
+   0x08051cbc <+1052>:	cmp    $0xb,%eax
+   0x08051cbf <+1055>:	je     0x8051c75 <handle_read+981>
+   0x08051cc1 <+1057>:	mov    $0x8082700,%eax
+   0x08051cc6 <+1062>:	mov    %eax,%edx
+   0x08051cc8 <+1064>:	and    $0x7,%eax
+   0x08051ccb <+1067>:	shr    $0x3,%edx
+   0x08051cce <+1070>:	add    $0x3,%eax
+   0x08051cd1 <+1073>:	movzbl 0x20000000(%edx),%edx
+   0x08051cd8 <+1080>:	cmp    %dl,%al
+   0x08051cda <+1082>:	jl     0x8051d30 <handle_read+1168>
+   0x08051cdc <+1084>:	test   %dl,%dl
+   0x08051cde <+1086>:	je     0x8051d30 <handle_read+1168>
+   0x08051ce0 <+1088>:	sub    $0xc,%esp
+   0x08051ce3 <+1091>:	push   $0x8082700
+   0x08051ce8 <+1096>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08051ced <+1101>:	lea    0x0(%esi),%esi
+   0x08051cf0 <+1104>:	mov    $0x8082740,%eax
+   0x08051cf5 <+1109>:	mov    0x8082700,%ecx
+   0x08051cfb <+1115>:	mov    %eax,%edx
+   0x08051cfd <+1117>:	and    $0x7,%eax
+   0x08051d00 <+1120>:	shr    $0x3,%edx
+   0x08051d03 <+1123>:	add    $0x3,%eax
+   0x08051d06 <+1126>:	movzbl 0x20000000(%edx),%edx
+   0x08051d0d <+1133>:	cmp    %dl,%al
+   0x08051d0f <+1135>:	jl     0x805198a <handle_read+234>
+   0x08051d15 <+1141>:	test   %dl,%dl
+   0x08051d17 <+1143>:	je     0x805198a <handle_read+234>
+   0x08051d1d <+1149>:	sub    $0xc,%esp
+   0x08051d20 <+1152>:	push   $0x8082740
+   0x08051d25 <+1157>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08051d2a <+1162>:	lea    0x0(%esi),%esi
+   0x08051d30 <+1168>:	mov    $0x8082740,%eax
+   0x08051d35 <+1173>:	mov    0x8082700,%ecx
+   0x08051d3b <+1179>:	mov    %eax,%edx
+   0x08051d3d <+1181>:	and    $0x7,%eax
+   0x08051d40 <+1184>:	shr    $0x3,%edx
+   0x08051d43 <+1187>:	add    $0x3,%eax
+   0x08051d46 <+1190>:	movzbl 0x20000000(%edx),%edx
+   0x08051d4d <+1197>:	cmp    %dl,%al
+   0x08051d4f <+1199>:	jl     0x805198a <handle_read+234>
+   0x08051d55 <+1205>:	test   %dl,%dl
+   0x08051d57 <+1207>:	je     0x805198a <handle_read+234>
+   0x08051d5d <+1213>:	sub    $0xc,%esp
+   0x08051d60 <+1216>:	push   $0x8082740
+   0x08051d65 <+1221>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08051d6a <+1226>:	lea    0x0(%esi),%esi
+   0x08051d70 <+1232>:	mov    $0x8082700,%eax
+   0x08051d75 <+1237>:	mov    %eax,%edx
+   0x08051d77 <+1239>:	and    $0x7,%eax
+   0x08051d7a <+1242>:	shr    $0x3,%edx
+   0x08051d7d <+1245>:	add    $0x3,%eax
+   0x08051d80 <+1248>:	movzbl 0x20000000(%edx),%edx
+   0x08051d87 <+1255>:	cmp    %dl,%al
+   0x08051d89 <+1257>:	jl     0x8051d93 <handle_read+1267>
+   0x08051d8b <+1259>:	test   %dl,%dl
+   0x08051d8d <+1261>:	jne    0x8052280 <handle_read+2528>
+   0x08051d93 <+1267>:	mov    $0x8082740,%eax
+   0x08051d98 <+1272>:	mov    0x8082700,%ecx
+   0x08051d9e <+1278>:	mov    %eax,%edx
+   0x08051da0 <+1280>:	and    $0x7,%eax
+   0x08051da3 <+1283>:	shr    $0x3,%edx
+   0x08051da6 <+1286>:	add    $0x3,%eax
+   0x08051da9 <+1289>:	movzbl 0x20000000(%edx),%edx
+   0x08051db0 <+1296>:	cmp    %dl,%al
+   0x08051db2 <+1298>:	jl     0x805198a <handle_read+234>
+   0x08051db8 <+1304>:	test   %dl,%dl
+   0x08051dba <+1306>:	je     0x805198a <handle_read+234>
+   0x08051dc0 <+1312>:	sub    $0xc,%esp
+   0x08051dc3 <+1315>:	push   $0x8082740
+   0x08051dc8 <+1320>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08051dcd <+1325>:	lea    0x0(%esi),%esi
+   0x08051dd0 <+1328>:	sub    $0xc,%esp
+   0x08051dd3 <+1331>:	push   %ebx
+   0x08051dd4 <+1332>:	call   0x805ca80 <httpd_parse_request>
+   0x08051dd9 <+1337>:	add    $0x10,%esp
+   0x08051ddc <+1340>:	test   %eax,%eax
+   0x08051dde <+1342>:	js     0x8051f69 <handle_read+1737>
+   0x08051de4 <+1348>:	mov    %edi,%eax
+   0x08051de6 <+1350>:	call   0x8050820 <check_throttles>
+   0x08051deb <+1355>:	test   %eax,%eax
+   0x08051ded <+1357>:	je     0x8051f80 <handle_read+1760>
+   0x08051df3 <+1363>:	sub    $0x8,%esp
+   0x08051df6 <+1366>:	pushl  0x14(%esp)
+   0x08051dfa <+1370>:	push   %ebx
+   0x08051dfb <+1371>:	call   0x8063020 <httpd_start_request>
+   0x08051e00 <+1376>:	add    $0x10,%esp
+   0x08051e03 <+1379>:	test   %eax,%eax
+   0x08051e05 <+1381>:	js     0x8051f69 <handle_read+1737>
+   0x08051e0b <+1387>:	lea    0x150(%ebx),%edx
+   0x08051e11 <+1393>:	mov    %edx,%eax
+   0x08051e13 <+1395>:	shr    $0x3,%eax
+   0x08051e16 <+1398>:	movzbl 0x20000000(%eax),%ecx
+   0x08051e1d <+1405>:	mov    %edx,%eax
+   0x08051e1f <+1407>:	and    $0x7,%eax
+   0x08051e22 <+1410>:	add    $0x3,%eax
+   0x08051e25 <+1413>:	cmp    %cl,%al
+   0x08051e27 <+1415>:	jl     0x8051e31 <handle_read+1425>
+   0x08051e29 <+1417>:	test   %cl,%cl
+   0x08051e2b <+1419>:	jne    0x8052342 <handle_read+2722>
+   0x08051e31 <+1425>:	mov    0x150(%ebx),%edx
+   0x08051e37 <+1431>:	test   %edx,%edx
+   0x08051e39 <+1433>:	je     0x8052080 <handle_read+2016>
+   0x08051e3f <+1439>:	lea    0x158(%ebx),%edx
+   0x08051e45 <+1445>:	mov    %edx,%eax
+   0x08051e47 <+1447>:	shr    $0x3,%eax
+   0x08051e4a <+1450>:	movzbl 0x20000000(%eax),%ecx
+   0x08051e51 <+1457>:	mov    %edx,%eax
+   0x08051e53 <+1459>:	and    $0x7,%eax
+   0x08051e56 <+1462>:	add    $0x3,%eax
+   0x08051e59 <+1465>:	cmp    %cl,%al
+   0x08051e5b <+1467>:	jl     0x8051e65 <handle_read+1477>
+   0x08051e5d <+1469>:	test   %cl,%cl
+   0x08051e5f <+1471>:	jne    0x8052308 <handle_read+2664>
+   0x08051e65 <+1477>:	lea    0x5c(%edi),%edx
+   0x08051e68 <+1480>:	mov    0x158(%ebx),%esi
+   0x08051e6e <+1486>:	mov    %edx,%eax
+   0x08051e70 <+1488>:	shr    $0x3,%eax
+   0x08051e73 <+1491>:	movzbl 0x20000000(%eax),%ecx
+   0x08051e7a <+1498>:	mov    %edx,%eax
+   0x08051e7c <+1500>:	and    $0x7,%eax
+   0x08051e7f <+1503>:	add    $0x3,%eax
+   0x08051e82 <+1506>:	cmp    %cl,%al
+   0x08051e84 <+1508>:	jl     0x8051e8e <handle_read+1518>
+   0x08051e86 <+1510>:	test   %cl,%cl
+   0x08051e88 <+1512>:	jne    0x8052311 <handle_read+2673>
+   0x08051e8e <+1518>:	lea    0x15c(%ebx),%edx
+   0x08051e94 <+1524>:	mov    %esi,0x5c(%edi)
+   0x08051e97 <+1527>:	mov    %edx,%eax
+   0x08051e99 <+1529>:	shr    $0x3,%eax
+   0x08051e9c <+1532>:	movzbl 0x20000000(%eax),%ecx
+   0x08051ea3 <+1539>:	mov    %edx,%eax
+   0x08051ea5 <+1541>:	and    $0x7,%eax
+   0x08051ea8 <+1544>:	add    $0x3,%eax
+   0x08051eab <+1547>:	cmp    %cl,%al
+   0x08051ead <+1549>:	jl     0x8051eb7 <handle_read+1559>
+   0x08051eaf <+1551>:	test   %cl,%cl
+   0x08051eb1 <+1553>:	jne    0x805231a <handle_read+2682>
+   0x08051eb7 <+1559>:	lea    0x58(%edi),%esi
+   0x08051eba <+1562>:	mov    0x15c(%ebx),%eax
+   0x08051ec0 <+1568>:	mov    %esi,%edx
+   0x08051ec2 <+1570>:	shr    $0x3,%edx
+   0x08051ec5 <+1573>:	add    $0x1,%eax
+   0x08051ec8 <+1576>:	movzbl 0x20000000(%edx),%ecx
+   0x08051ecf <+1583>:	mov    %esi,%edx
+   0x08051ed1 <+1585>:	and    $0x7,%edx
+   0x08051ed4 <+1588>:	add    $0x3,%edx
+   0x08051ed7 <+1591>:	cmp    %cl,%dl
+   0x08051ed9 <+1593>:	jl     0x8051ee3 <handle_read+1603>
+   0x08051edb <+1595>:	test   %cl,%cl
+   0x08051edd <+1597>:	jne    0x805228d <handle_read+2541>
+   0x08051ee3 <+1603>:	mov    %eax,0x58(%edi)
+   0x08051ee6 <+1606>:	lea    0x1c4(%ebx),%edx
+   0x08051eec <+1612>:	mov    %edx,%eax
+   0x08051eee <+1614>:	shr    $0x3,%eax
+   0x08051ef1 <+1617>:	movzbl 0x20000000(%eax),%ecx
+   0x08051ef8 <+1624>:	mov    %edx,%eax
+   0x08051efa <+1626>:	and    $0x7,%eax
+   0x08051efd <+1629>:	add    $0x3,%eax
+   0x08051f00 <+1632>:	cmp    %cl,%al
+   0x08051f02 <+1634>:	jl     0x8051f0c <handle_read+1644>
+   0x08051f04 <+1636>:	test   %cl,%cl
+   0x08051f06 <+1638>:	jne    0x8052296 <handle_read+2550>
+   0x08051f0c <+1644>:	mov    0x1c4(%ebx),%eax
+   0x08051f12 <+1650>:	test   %eax,%eax
+   0x08051f14 <+1652>:	je     0x80520df <handle_read+2111>
+   0x08051f1a <+1658>:	lea    0x5c(%edi),%edx
+   0x08051f1d <+1661>:	mov    %edx,%eax
+   0x08051f1f <+1663>:	shr    $0x3,%eax
+   0x08051f22 <+1666>:	movzbl 0x20000000(%eax),%ecx
+   0x08051f29 <+1673>:	mov    %edx,%eax
+   0x08051f2b <+1675>:	and    $0x7,%eax
+   0x08051f2e <+1678>:	add    $0x3,%eax
+   0x08051f31 <+1681>:	cmp    %cl,%al
+   0x08051f33 <+1683>:	jl     0x8051f3d <handle_read+1693>
+   0x08051f35 <+1685>:	test   %cl,%cl
+   0x08051f37 <+1687>:	jne    0x805229f <handle_read+2559>
+   0x08051f3d <+1693>:	mov    %esi,%eax
+   0x08051f3f <+1695>:	mov    0x5c(%edi),%ecx
+   0x08051f42 <+1698>:	shr    $0x3,%eax
+   0x08051f45 <+1701>:	movzbl 0x20000000(%eax),%edx
+   0x08051f4c <+1708>:	mov    %esi,%eax
+   0x08051f4e <+1710>:	and    $0x7,%eax
+   0x08051f51 <+1713>:	add    $0x3,%eax
+   0x08051f54 <+1716>:	cmp    %dl,%al
+   0x08051f56 <+1718>:	jl     0x8051f60 <handle_read+1728>
+   0x08051f58 <+1720>:	test   %dl,%dl
+   0x08051f5a <+1722>:	jne    0x805226a <handle_read+2506>
+   0x08051f60 <+1728>:	cmp    0x58(%edi),%ecx
+   0x08051f63 <+1731>:	jl     0x8051b70 <handle_read+720>
+   0x08051f69 <+1737>:	mov    0xc(%esp),%edx
+   0x08051f6d <+1741>:	mov    %edi,%eax
+   0x08051f6f <+1743>:	add    $0x2c,%esp
+   0x08051f72 <+1746>:	jmp    0x80519b2 <handle_read+274>
+   0x08051f77 <+1751>:	mov    %esi,%esi
+   0x08051f79 <+1753>:	lea    0x0(%edi,%eiz,1),%edi
+   0x08051f80 <+1760>:	lea    0xac(%ebx),%edx
+   0x08051f86 <+1766>:	mov    %edx,%eax
+   0x08051f88 <+1768>:	shr    $0x3,%eax
+   0x08051f8b <+1771>:	movzbl 0x20000000(%eax),%ecx
+   0x08051f92 <+1778>:	mov    %edx,%eax
+   0x08051f94 <+1780>:	and    $0x7,%eax
+   0x08051f97 <+1783>:	add    $0x3,%eax
+   0x08051f9a <+1786>:	cmp    %cl,%al
+   0x08051f9c <+1788>:	jl     0x8051fa6 <handle_read+1798>
+   0x08051f9e <+1790>:	test   %cl,%cl
+   0x08051fa0 <+1792>:	jne    0x8052323 <handle_read+2691>
+   0x08051fa6 <+1798>:	mov    $0x8082600,%eax
+   0x08051fab <+1803>:	mov    0xac(%ebx),%esi
+   0x08051fb1 <+1809>:	mov    %eax,%edx
+   0x08051fb3 <+1811>:	and    $0x7,%eax
+   0x08051fb6 <+1814>:	shr    $0x3,%edx
+   0x08051fb9 <+1817>:	add    $0x3,%eax
+   0x08051fbc <+1820>:	movzbl 0x20000000(%edx),%edx
+   0x08051fc3 <+1827>:	cmp    %dl,%al
+   0x08051fc5 <+1829>:	jl     0x8051fcf <handle_read+1839>
+   0x08051fc7 <+1831>:	test   %dl,%dl
+   0x08051fc9 <+1833>:	jne    0x805232c <handle_read+2700>
+   0x08051fcf <+1839>:	mov    $0x8082640,%eax
+   0x08051fd4 <+1844>:	mov    0x8082600,%ecx
+   0x08051fda <+1850>:	mov    %eax,%edx
+   0x08051fdc <+1852>:	and    $0x7,%eax
+   0x08051fdf <+1855>:	shr    $0x3,%edx
+   0x08051fe2 <+1858>:	add    $0x3,%eax
+   0x08051fe5 <+1861>:	movzbl 0x20000000(%edx),%edx
+   0x08051fec <+1868>:	cmp    %dl,%al
+   0x08051fee <+1870>:	jl     0x8051ff8 <handle_read+1880>
+   0x08051ff0 <+1872>:	test   %dl,%dl
+   0x08051ff2 <+1874>:	jne    0x8052273 <handle_read+2515>
+   0x08051ff8 <+1880>:	sub    $0x8,%esp
+   0x08051ffb <+1883>:	push   %esi
+   0x08051ffc <+1884>:	push   %ecx
+   0x08051ffd <+1885>:	push   $0x8067c60
+   0x08052002 <+1890>:	pushl  0x8082640
+   0x08052008 <+1896>:	push   $0x1f7
+   0x0805200d <+1901>:	jmp    0x80519a3 <handle_read+259>
+   0x08052012 <+1906>:	sub    $0xc,%esp
+   0x08052015 <+1909>:	push   %ebp
+   0x08052016 <+1910>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805201b <+1915>:	sub    $0xc,%esp
+   0x0805201e <+1918>:	push   %esi
+   0x0805201f <+1919>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052024 <+1924>:	sub    $0xc,%esp
+   0x08052027 <+1927>:	push   %edx
+   0x08052028 <+1928>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805202d <+1933>:	sub    $0xc,%esp
+   0x08052030 <+1936>:	push   %ebp
+   0x08052031 <+1937>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052036 <+1942>:	sub    $0xc,%esp
+   0x08052039 <+1945>:	push   $0x8082700
+   0x0805203e <+1950>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052043 <+1955>:	sub    $0xc,%esp
+   0x08052046 <+1958>:	push   $0x8082740
+   0x0805204b <+1963>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052050 <+1968>:	sub    $0xc,%esp
+   0x08052053 <+1971>:	push   %eax
+   0x08052054 <+1972>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052059 <+1977>:	sub    $0xc,%esp
+   0x0805205c <+1980>:	push   %esi
+   0x0805205d <+1981>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052062 <+1986>:	sub    $0xc,%esp
+   0x08052065 <+1989>:	pushl  0x18(%esp)
+   0x08052069 <+1993>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805206e <+1998>:	sub    $0xc,%esp
+   0x08052071 <+2001>:	push   %edx
+   0x08052072 <+2002>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x08052077 <+2007>:	sub    $0xc,%esp
+   0x0805207a <+2010>:	push   %esi
+   0x0805207b <+2011>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052080 <+2016>:	lea    0xa4(%ebx),%edx
+   0x08052086 <+2022>:	mov    %edx,%eax
+   0x08052088 <+2024>:	shr    $0x3,%eax
+   0x0805208b <+2027>:	movzbl 0x20000000(%eax),%ecx
+   0x08052092 <+2034>:	mov    %edx,%eax
+   0x08052094 <+2036>:	and    $0x7,%eax
+   0x08052097 <+2039>:	add    $0x3,%eax
+   0x0805209a <+2042>:	cmp    %cl,%al
+   0x0805209c <+2044>:	jl     0x80520a6 <handle_read+2054>
+   0x0805209e <+2046>:	test   %cl,%cl
+   0x080520a0 <+2048>:	jne    0x80522b1 <handle_read+2577>
+   0x080520a6 <+2054>:	mov    0xa4(%ebx),%edx
+   0x080520ac <+2060>:	lea    0x58(%edi),%esi
+   0x080520af <+2063>:	mov    %esi,%eax
+   0x080520b1 <+2065>:	shr    $0x3,%eax
+   0x080520b4 <+2068>:	test   %edx,%edx
+   0x080520b6 <+2070>:	js     0x80521e7 <handle_read+2375>
+   0x080520bc <+2076>:	movzbl 0x20000000(%eax),%ecx
+   0x080520c3 <+2083>:	mov    %esi,%eax
+   0x080520c5 <+2085>:	and    $0x7,%eax
+   0x080520c8 <+2088>:	add    $0x3,%eax
+   0x080520cb <+2091>:	cmp    %cl,%al
+   0x080520cd <+2093>:	jl     0x80520d7 <handle_read+2103>
+   0x080520cf <+2095>:	test   %cl,%cl
+   0x080520d1 <+2097>:	jne    0x80522ba <handle_read+2586>
+   0x080520d7 <+2103>:	mov    %edx,0x58(%edi)
+   0x080520da <+2106>:	jmp    0x8051ee6 <handle_read+1606>
+   0x080520df <+2111>:	lea    0x34(%edi),%edx
+   0x080520e2 <+2114>:	mov    %edx,%eax
+   0x080520e4 <+2116>:	shr    $0x3,%eax
+   0x080520e7 <+2119>:	movzbl 0x20000000(%eax),%ecx
+   0x080520ee <+2126>:	mov    %edx,%eax
+   0x080520f0 <+2128>:	and    $0x7,%eax
+   0x080520f3 <+2131>:	add    $0x3,%eax
+   0x080520f6 <+2134>:	cmp    %cl,%al
+   0x080520f8 <+2136>:	jl     0x8052102 <handle_read+2146>
+   0x080520fa <+2138>:	test   %cl,%cl
+   0x080520fc <+2140>:	jne    0x80522a8 <handle_read+2568>
+   0x08052102 <+2146>:	mov    0x34(%edi),%eax
+   0x08052105 <+2149>:	test   %eax,%eax
+   0x08052107 <+2151>:	mov    %eax,0x14(%esp)
+   0x0805210b <+2155>:	jle    0x805220a <handle_read+2410>
+   0x08052111 <+2161>:	mov    0x8087ae0,%eax
+   0x08052116 <+2166>:	lea    0xa8(%ebx),%edx
+   0x0805211c <+2172>:	mov    %eax,0x18(%esp)
+   0x08052120 <+2176>:	mov    %edx,%eax
+   0x08052122 <+2178>:	shr    $0x3,%eax
+   0x08052125 <+2181>:	movzbl 0x20000000(%eax),%ecx
+   0x0805212c <+2188>:	mov    %edx,%eax
+   0x0805212e <+2190>:	and    $0x7,%eax
+   0x08052131 <+2193>:	add    $0x3,%eax
+   0x08052134 <+2196>:	cmp    %cl,%al
+   0x08052136 <+2198>:	jl     0x8052140 <handle_read+2208>
+   0x08052138 <+2200>:	test   %cl,%cl
+   0x0805213a <+2202>:	jne    0x8052246 <handle_read+2470>
+   0x08052140 <+2208>:	mov    0xa8(%ebx),%ebp
+   0x08052146 <+2214>:	lea    0xc(%edi),%eax
+   0x08052149 <+2217>:	xor    %esi,%esi
+   0x0805214b <+2219>:	mov    %edi,0x1c(%esp)
+   0x0805214f <+2223>:	nop
+   0x08052150 <+2224>:	mov    %eax,%edx
+   0x08052152 <+2226>:	shr    $0x3,%edx
+   0x08052155 <+2229>:	movzbl 0x20000000(%edx),%ecx
+   0x0805215c <+2236>:	mov    %eax,%edx
+   0x0805215e <+2238>:	and    $0x7,%edx
+   0x08052161 <+2241>:	add    $0x3,%edx
+   0x08052164 <+2244>:	cmp    %cl,%dl
+   0x08052166 <+2246>:	jl     0x8052170 <handle_read+2256>
+   0x08052168 <+2248>:	test   %cl,%cl
+   0x0805216a <+2250>:	jne    0x805224f <handle_read+2479>
+   0x08052170 <+2256>:	mov    (%eax),%edx
+   0x08052172 <+2258>:	mov    0x18(%esp),%edi
+   0x08052176 <+2262>:	lea    (%edx,%edx,2),%edx
+   0x08052179 <+2265>:	lea    (%edi,%edx,8),%edi
+   0x0805217c <+2268>:	lea    0x10(%edi),%ebx
+   0x0805217f <+2271>:	mov    %edi,0x10(%esp)
+   0x08052183 <+2275>:	mov    %ebx,%ecx
+   0x08052185 <+2277>:	shr    $0x3,%ecx
+   0x08052188 <+2280>:	movzbl 0x20000000(%ecx),%edi
+   0x0805218f <+2287>:	mov    %ebx,%ecx
+   0x08052191 <+2289>:	and    $0x7,%ecx
+   0x08052194 <+2292>:	add    $0x3,%ecx
+   0x08052197 <+2295>:	mov    %edi,%edx
+   0x08052199 <+2297>:	cmp    %dl,%cl
+   0x0805219b <+2299>:	jl     0x80521a5 <handle_read+2309>
+   0x0805219d <+2301>:	test   %dl,%dl
+   0x0805219f <+2303>:	jne    0x8052258 <handle_read+2488>
+   0x080521a5 <+2309>:	mov    0x10(%esp),%edi
+   0x080521a9 <+2313>:	add    $0x1,%esi
+   0x080521ac <+2316>:	add    $0x4,%eax
+   0x080521af <+2319>:	add    %ebp,0x10(%edi)
+   0x080521b2 <+2322>:	cmp    %esi,0x14(%esp)
+   0x080521b6 <+2326>:	jne    0x8052150 <handle_read+2224>
+   0x080521b8 <+2328>:	mov    0x1c(%esp),%edi
+   0x080521bc <+2332>:	lea    0x5c(%edi),%edx
+   0x080521bf <+2335>:	mov    %edx,%eax
+   0x080521c1 <+2337>:	shr    $0x3,%eax
+   0x080521c4 <+2340>:	movzbl 0x20000000(%eax),%ecx
+   0x080521cb <+2347>:	mov    %edx,%eax
+   0x080521cd <+2349>:	and    $0x7,%eax
+   0x080521d0 <+2352>:	add    $0x3,%eax
+   0x080521d3 <+2355>:	cmp    %cl,%al
+   0x080521d5 <+2357>:	jl     0x80521df <handle_read+2367>
+   0x080521d7 <+2359>:	test   %cl,%cl
+   0x080521d9 <+2361>:	jne    0x8052261 <handle_read+2497>
+   0x080521df <+2367>:	mov    %ebp,0x5c(%edi)
+   0x080521e2 <+2370>:	jmp    0x8051f69 <handle_read+1737>
+   0x080521e7 <+2375>:	movzbl 0x20000000(%eax),%edx
+   0x080521ee <+2382>:	mov    %esi,%eax
+   0x080521f0 <+2384>:	and    $0x7,%eax
+   0x080521f3 <+2387>:	add    $0x3,%eax
+   0x080521f6 <+2390>:	cmp    %dl,%al
+   0x080521f8 <+2392>:	jl     0x80521fe <handle_read+2398>
+   0x080521fa <+2394>:	test   %dl,%dl
+   0x080521fc <+2396>:	jne    0x805223d <handle_read+2461>
+   0x080521fe <+2398>:	movl   $0x0,0x58(%edi)
+   0x08052205 <+2405>:	jmp    0x8051ee6 <handle_read+1606>
+   0x0805220a <+2410>:	lea    0xa8(%ebx),%eax
+   0x08052210 <+2416>:	mov    %eax,%edx
+   0x08052212 <+2418>:	shr    $0x3,%edx
+   0x08052215 <+2421>:	movzbl 0x20000000(%edx),%ecx
+   0x0805221c <+2428>:	mov    %eax,%edx
+   0x0805221e <+2430>:	and    $0x7,%edx
+   0x08052221 <+2433>:	add    $0x3,%edx
+   0x08052224 <+2436>:	cmp    %cl,%dl
+   0x08052226 <+2438>:	jl     0x805222c <handle_read+2444>
+   0x08052228 <+2440>:	test   %cl,%cl
+   0x0805222a <+2442>:	jne    0x8052234 <handle_read+2452>
+   0x0805222c <+2444>:	mov    0xa8(%ebx),%ebp
+   0x08052232 <+2450>:	jmp    0x80521bc <handle_read+2332>
+   0x08052234 <+2452>:	sub    $0xc,%esp
+   0x08052237 <+2455>:	push   %eax
+   0x08052238 <+2456>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805223d <+2461>:	sub    $0xc,%esp
+   0x08052240 <+2464>:	push   %esi
+   0x08052241 <+2465>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x08052246 <+2470>:	sub    $0xc,%esp
+   0x08052249 <+2473>:	push   %edx
+   0x0805224a <+2474>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805224f <+2479>:	sub    $0xc,%esp
+   0x08052252 <+2482>:	push   %eax
+   0x08052253 <+2483>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052258 <+2488>:	sub    $0xc,%esp
+   0x0805225b <+2491>:	push   %ebx
+   0x0805225c <+2492>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052261 <+2497>:	sub    $0xc,%esp
+   0x08052264 <+2500>:	push   %edx
+   0x08052265 <+2501>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x0805226a <+2506>:	sub    $0xc,%esp
+   0x0805226d <+2509>:	push   %esi
+   0x0805226e <+2510>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052273 <+2515>:	sub    $0xc,%esp
+   0x08052276 <+2518>:	push   $0x8082640
+   0x0805227b <+2523>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052280 <+2528>:	sub    $0xc,%esp
+   0x08052283 <+2531>:	push   $0x8082700
+   0x08052288 <+2536>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805228d <+2541>:	sub    $0xc,%esp
+   0x08052290 <+2544>:	push   %esi
+   0x08052291 <+2545>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x08052296 <+2550>:	sub    $0xc,%esp
+   0x08052299 <+2553>:	push   %edx
+   0x0805229a <+2554>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805229f <+2559>:	sub    $0xc,%esp
+   0x080522a2 <+2562>:	push   %edx
+   0x080522a3 <+2563>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x080522a8 <+2568>:	sub    $0xc,%esp
+   0x080522ab <+2571>:	push   %edx
+   0x080522ac <+2572>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x080522b1 <+2577>:	sub    $0xc,%esp
+   0x080522b4 <+2580>:	push   %edx
+   0x080522b5 <+2581>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x080522ba <+2586>:	sub    $0xc,%esp
+   0x080522bd <+2589>:	push   %esi
+   0x080522be <+2590>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x080522c3 <+2595>:	sub    $0xc,%esp
+   0x080522c6 <+2598>:	push   %edi
+   0x080522c7 <+2599>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x080522cc <+2604>:	sub    $0xc,%esp
+   0x080522cf <+2607>:	pushl  0x18(%esp)
+   0x080522d3 <+2611>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x080522d8 <+2616>:	sub    $0xc,%esp
+   0x080522db <+2619>:	push   %edx
+   0x080522dc <+2620>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x080522e1 <+2625>:	sub    $0xc,%esp
+   0x080522e4 <+2628>:	push   %edx
+   0x080522e5 <+2629>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x080522ea <+2634>:	sub    $0xc,%esp
+   0x080522ed <+2637>:	push   %ebp
+   0x080522ee <+2638>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x080522f3 <+2643>:	sub    $0xc,%esp
+   0x080522f6 <+2646>:	push   %ebp
+   0x080522f7 <+2647>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x080522fc <+2652>:	sub    $0xc,%esp
+   0x080522ff <+2655>:	pushl  0x1c(%esp)
+   0x08052303 <+2659>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052308 <+2664>:	sub    $0xc,%esp
+   0x0805230b <+2667>:	push   %edx
+   0x0805230c <+2668>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052311 <+2673>:	sub    $0xc,%esp
+   0x08052314 <+2676>:	push   %edx
+   0x08052315 <+2677>:	call   0x8049d00 <__asan_report_store4@plt>
+   0x0805231a <+2682>:	sub    $0xc,%esp
+   0x0805231d <+2685>:	push   %edx
+   0x0805231e <+2686>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052323 <+2691>:	sub    $0xc,%esp
+   0x08052326 <+2694>:	push   %edx
+   0x08052327 <+2695>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x0805232c <+2700>:	sub    $0xc,%esp
+   0x0805232f <+2703>:	push   $0x8082600
+   0x08052334 <+2708>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052339 <+2713>:	sub    $0xc,%esp
+   0x0805233c <+2716>:	push   %ebp
+   0x0805233d <+2717>:	call   0x8049f70 <__asan_report_load4@plt>
+   0x08052342 <+2722>:	sub    $0xc,%esp
+   0x08052345 <+2725>:	push   %edx
+   0x08052346 <+2726>:	call   0x8049f70 <__asan_report_load4@plt>
+End of assembler dump.

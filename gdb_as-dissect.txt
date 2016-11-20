@@ -1,0 +1,650 @@
+Undefined set breakpoint command: "thttpd.c:1018".  Try "help set breakpoint".
+Breakpoint 1 at 0x804eb69: file thttpd.c, line 1018.
+1: /x $rax = <error: Value can't be converted to integer.>
+2: x/5i $rip
+<error: Value can't be converted to integer.>
+Starting program: /w/home.05/be/ugrad/khachatr/CS33/smashing_lab/sthttpd-2.27.0/src/thttpd-as -C config.txt
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+warning: File "/usr/local/cs/gcc-6.2.0/lib/libstdc++.so.6.0.22-gdb.py" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
+To enable execution of this file add
+	add-auto-load-safe-path /usr/local/cs/gcc-6.2.0/lib/libstdc++.so.6.0.22-gdb.py
+line to your configuration file "/u/be/ugrad/khachatr/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/u/be/ugrad/khachatr/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+
+Breakpoint 1, read_config (filename=<optimized out>) at thttpd.c:1018
+1018		if ( ( cp = strchr( line, '#' ) ) != (char*) 0 )
+2: x/5i $rip
+<error: Value can't be converted to integer.>
+1: /x $rax = <error: Value can't be converted to integer.>
+eax            0xffffc000	-16384
+ecx            0xf646b39d	-163138659
+edx            0xf6103be8	-166708248
+ebx            0xffffd5fd	-10755
+esp            0xffffbfd0	0xffffbfd0
+ebp            0xffffd444	0xffffd444
+esi            0x800013	8388627
+edi            0xffffbfe0	-16416
+eip            0x804eb69	0x804eb69 <read_config+169>
+eflags         0x286	[ PF SF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+3: /x $eax = 0xffffc000
+4: x/5i $eip
+=> 0x804eb69 <read_config+169>:	sub    $0x8,%esp
+   0x804eb6c <read_config+172>:	push   $0x23
+   0x804eb6e <read_config+174>:	pushl  0x10(%esp)
+   0x804eb72 <read_config+178>:	call   0x804a4b0 <strchr@plt>
+   0x804eb77 <read_config+183>:	add    $0x10,%esp
+5: /x $esp = 0xffffbfd0
+$1 = (void *) 0xffffbfd0
+0xffffbfd0:	0xffffbfe0
+
+Program received signal SIGSEGV, Segmentation fault.
+x86_fallback_frame_state (context=<optimized out>, 
+    context=<optimized out>, fs=0xffffb510)
+    at ./md-unwind-support.h:127
+127	./md-unwind-support.h: No such file or directory.
+5: /x $esp = 0xffffb440
+4: x/5i $eip
+=> 0xf764dcb6 <uw_frame_state_for+470>:	cmpw   $0xb858,(%eax)
+   0xf764dcbb <uw_frame_state_for+475>:	
+    je     0xf764df32 <uw_frame_state_for+1106>
+   0xf764dcc1 <uw_frame_state_for+481>:	cmpb   $0xb8,(%eax)
+   0xf764dcc4 <uw_frame_state_for+484>:	
+    je     0xf764dffb <uw_frame_state_for+1307>
+   0xf764dcca <uw_frame_state_for+490>:	lea    0x0(%esi),%esi
+3: /x $eax = 0x615f7369
+No symbol "eax" in current context.
+__asan::AsanOnDeadlySignal (signo=11, siginfo=0xf7a49b0c, 
+    context=0xf7a49b8c)
+    at ../../../../../gcc-6.2.0/libsanitizer/asan/asan_posix.cc:34
+34	../../../../../gcc-6.2.0/libsanitizer/asan/asan_posix.cc: No such file or directory.
+5: /x $esp = 0xf7a49afc
+4: x/5i $eip
+=> 0xf7b0eb30 <__asan::AsanOnDeadlySignal(int, void*, void*)>:	
+    push   %ebp
+   0xf7b0eb31 <__asan::AsanOnDeadlySignal(int, void*, void*)+1>:	push   %edi
+   0xf7b0eb32 <__asan::AsanOnDeadlySignal(int, void*, void*)+2>:	push   %esi
+   0xf7b0eb33 <__asan::AsanOnDeadlySignal(int, void*, void*)+3>:	push   %ebx
+   0xf7b0eb34 <__asan::AsanOnDeadlySignal(int, void*, void*)+4>:	call   0xf7a643d0 <__x86.get_pc_thunk.bx>
+3: /x $eax = 0xb
+No symbol "eax" in current context.
+Bottom (innermost) frame selected; you cannot go down.
+0xb:	Cannot access memory at address 0xb
+#1  <signal handler called>
+#2  x86_fallback_frame_state (context=<optimized out>, 
+    context=<optimized out>, fs=0xffffb510)
+    at ./md-unwind-support.h:127
+127	./md-unwind-support.h: No such file or directory.
+0x615f7369:	Cannot access memory at address 0x615f7369
+#3  uw_frame_state_for (context=context@entry=0xffffb490, 
+    fs=fs@entry=0xffffb510)
+    at ../../../../gcc-6.2.0/libgcc/unwind-dw2.c:1249
+1249	../../../../gcc-6.2.0/libgcc/unwind-dw2.c: No such file or directory.
+Dump of assembler code for function uw_frame_state_for:
+   0xf764dae0 <+0>:	push   %ebp
+   0xf764dae1 <+1>:	push   %edi
+   0xf764dae2 <+2>:	mov    $0x30,%ecx
+   0xf764dae7 <+7>:	push   %esi
+   0xf764dae8 <+8>:	push   %ebx
+   0xf764dae9 <+9>:	mov    %eax,%ebx
+   0xf764daeb <+11>:	call   0xf7642dac <__x86.get_pc_thunk.di>
+   0xf764daf0 <+16>:	add    $0x9510,%edi
+   0xf764daf6 <+22>:	sub    $0x3c,%esp
+   0xf764daf9 <+25>:	xor    %eax,%eax
+   0xf764dafb <+27>:	mov    %edi,0xc(%esp)
+   0xf764daff <+31>:	mov    %edx,%edi
+   0xf764db01 <+33>:	rep stos %eax,%es:(%edi)
+   0xf764db03 <+35>:	movl   $0x0,0x68(%ebx)
+   0xf764db0a <+42>:	movl   $0x0,0x50(%ebx)
+   0xf764db11 <+49>:	mov    0x4c(%ebx),%eax
+   0xf764db14 <+52>:	test   %eax,%eax
+   0xf764db16 <+54>:	je     0xf764dcd0 <uw_frame_state_for+496>
+   0xf764db1c <+60>:	mov    0x60(%ebx),%esi
+   0xf764db1f <+63>:	mov    %edx,%edi
+   0xf764db21 <+65>:	lea    0x54(%ebx),%edx
+   0xf764db24 <+68>:	mov    %ebx,0x8(%esp)
+   0xf764db28 <+72>:	sub    $0x8,%esp
+   0xf764db2b <+75>:	push   %edx
+   0xf764db2c <+76>:	mov    %esi,%edx
+   0xf764db2e <+78>:	shr    $0x1f,%edx
+   0xf764db31 <+81>:	mov    %esi,0x1c(%esp)
+   0xf764db35 <+85>:	lea    -0x1(%eax,%edx,1),%eax
+   0xf764db39 <+89>:	push   %eax
+   0xf764db3a <+90>:	mov    0x1c(%esp),%ebx
+   0xf764db3e <+94>:	call   0xf763df40 <_Unwind_Find_FDE@plt>
+   0xf764db43 <+99>:	mov    %eax,0x24(%esp)
+   0xf764db47 <+103>:	add    $0x10,%esp
+   0xf764db4a <+106>:	test   %eax,%eax
+   0xf764db4c <+108>:	mov    0x8(%esp),%eax
+   0xf764db50 <+112>:	je     0xf764dcb0 <uw_frame_state_for+464>
+   0xf764db56 <+118>:	mov    0x14(%esp),%esi
+   0xf764db5a <+122>:	mov    0x5c(%eax),%eax
+   0xf764db5d <+125>:	sub    $0xc,%esp
+   0xf764db60 <+128>:	mov    %eax,0xa4(%edi)
+   0xf764db66 <+134>:	mov    %esi,%eax
+   0xf764db68 <+136>:	add    $0x4,%eax
+   0xf764db6b <+139>:	sub    0x4(%esi),%eax
+   0xf764db6e <+142>:	mov    %eax,0x24(%esp)
+   0xf764db72 <+146>:	mov    %eax,%esi
+   0xf764db74 <+148>:	add    $0x9,%eax
+   0xf764db77 <+151>:	mov    %eax,0x1c(%esp)
+   0xf764db7b <+155>:	push   %eax
+   0xf764db7c <+156>:	mov    %eax,%ebp
+   0xf764db7e <+158>:	mov    0x1c(%esp),%ebx
+   0xf764db82 <+162>:	call   0xf763df00 <strlen@plt>
+   0xf764db87 <+167>:	add    $0x10,%esp
+   0xf764db8a <+170>:	cmpb   $0x65,0x9(%esi)
+   0xf764db8e <+174>:	lea    0x1(%ebp,%eax,1),%eax
+   0xf764db92 <+178>:	je     0xf764de40 <uw_frame_state_for+864>
+   0xf764db98 <+184>:	mov    0x18(%esp),%ecx
+   0xf764db9c <+188>:	movzbl 0x8(%ecx),%ecx
+   0xf764dba0 <+192>:	cmp    $0x3,%cl
+   0xf764dba3 <+195>:	mov    %cl,0x1c(%esp)
+   0xf764dba7 <+199>:	ja     0xf764e020 <uw_frame_state_for+1344>
+   0xf764dbad <+205>:	xor    %esi,%esi
+   0xf764dbaf <+207>:	xor    %ecx,%ecx
+   0xf764dbb1 <+209>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dbb8 <+216>:	add    $0x1,%eax
+   0xf764dbbb <+219>:	movzbl -0x1(%eax),%ebx
+   0xf764dbbf <+223>:	mov    %ebx,%edx
+   0xf764dbc1 <+225>:	and    $0x7f,%edx
+   0xf764dbc4 <+228>:	shl    %cl,%edx
+   0xf764dbc6 <+230>:	add    $0x7,%ecx
+   0xf764dbc9 <+233>:	or     %edx,%esi
+   0xf764dbcb <+235>:	test   %bl,%bl
+   0xf764dbcd <+237>:	js     0xf764dbb8 <uw_frame_state_for+216>
+   0xf764dbcf <+239>:	mov    %esi,0xb0(%edi)
+   0xf764dbd5 <+245>:	xor    %ebp,%ebp
+   0xf764dbd7 <+247>:	xor    %ecx,%ecx
+   0xf764dbd9 <+249>:	jmp    0xf764dbe2 <uw_frame_state_for+258>
+   0xf764dbdb <+251>:	nop
+   0xf764dbdc <+252>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dbe0 <+256>:	mov    %esi,%eax
+   0xf764dbe2 <+258>:	lea    0x1(%eax),%esi
+   0xf764dbe5 <+261>:	movzbl -0x1(%esi),%ebx
+   0xf764dbe9 <+265>:	mov    %ebx,%edx
+   0xf764dbeb <+267>:	and    $0x7f,%edx
+   0xf764dbee <+270>:	shl    %cl,%edx
+   0xf764dbf0 <+272>:	add    $0x7,%ecx
+   0xf764dbf3 <+275>:	or     %edx,%ebp
+   0xf764dbf5 <+277>:	test   %bl,%bl
+   0xf764dbf7 <+279>:	js     0xf764dbe0 <uw_frame_state_for+256>
+   0xf764dbf9 <+281>:	mov    %esi,%edx
+   0xf764dbfb <+283>:	cmp    $0x1f,%ecx
+   0xf764dbfe <+286>:	mov    %ebx,%esi
+   0xf764dc00 <+288>:	mov    %edx,%ebx
+   0xf764dc02 <+290>:	ja     0xf764dc0d <uw_frame_state_for+301>
+   0xf764dc04 <+292>:	and    $0x40,%esi
+   0xf764dc07 <+295>:	jne    0xf764de00 <uw_frame_state_for+800>
+   0xf764dc0d <+301>:	xor    %edx,%edx
+   0xf764dc0f <+303>:	xor    %ecx,%ecx
+   0xf764dc11 <+305>:	cmpb   $0x1,0x1c(%esp)
+   0xf764dc16 <+310>:	mov    %ebp,0xac(%edi)
+   0xf764dc1c <+316>:	mov    %edx,%esi
+   0xf764dc1e <+318>:	je     0xf764dea8 <uw_frame_state_for+968>
+   0xf764dc24 <+324>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dc28 <+328>:	add    $0x1,%ebx
+   0xf764dc2b <+331>:	movzbl -0x1(%ebx),%edx
+   0xf764dc2f <+335>:	mov    %edx,%eax
+   0xf764dc31 <+337>:	and    $0x7f,%eax
+   0xf764dc34 <+340>:	shl    %cl,%eax
+   0xf764dc36 <+342>:	add    $0x7,%ecx
+   0xf764dc39 <+345>:	or     %eax,%esi
+   0xf764dc3b <+347>:	test   %dl,%dl
+   0xf764dc3d <+349>:	js     0xf764dc28 <uw_frame_state_for+328>
+   0xf764dc3f <+351>:	mov    %esi,0xb4(%edi)
+   0xf764dc45 <+357>:	mov    0x10(%esp),%eax
+   0xf764dc49 <+361>:	movb   $0xff,0xb9(%edi)
+   0xf764dc50 <+368>:	xor    %ebp,%ebp
+   0xf764dc52 <+370>:	movzbl (%eax),%eax
+   0xf764dc55 <+373>:	cmp    $0x7a,%al
+   0xf764dc57 <+375>:	je     0xf764de68 <uw_frame_state_for+904>
+   0xf764dc5d <+381>:	mov    0x10(%esp),%esi
+   0xf764dc61 <+385>:	lea    0x2c(%esp),%ecx
+   0xf764dc65 <+389>:	mov    %ebp,0x1c(%esp)
+   0xf764dc69 <+393>:	mov    %ebx,%ebp
+   0xf764dc6b <+395>:	mov    %ecx,0x10(%esp)
+   0xf764dc6f <+399>:	add    $0x1,%esi
+   0xf764dc72 <+402>:	jmp    0xf764dc95 <uw_frame_state_for+437>
+   0xf764dc74 <+404>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf764dc78 <+408>:	cmp    $0x52,%al
+   0xf764dc7a <+410>:	je     0xf764dce0 <uw_frame_state_for+512>
+   0xf764dc7c <+412>:	cmp    $0x50,%al
+   0xf764dc7e <+414>:	je     0xf764dcf0 <uw_frame_state_for+528>
+   0xf764dc80 <+416>:	cmp    $0x53,%al
+   0xf764dc82 <+418>:	jne    0xf764de20 <uw_frame_state_for+832>
+   0xf764dc88 <+424>:	movb   $0x1,0xbb(%edi)
+   0xf764dc8f <+431>:	movzbl (%esi),%eax
+   0xf764dc92 <+434>:	add    $0x1,%esi
+   0xf764dc95 <+437>:	test   %al,%al
+   0xf764dc97 <+439>:	je     0xf764dd30 <uw_frame_state_for+592>
+   0xf764dc9d <+445>:	cmp    $0x4c,%al
+   0xf764dc9f <+447>:	jne    0xf764dc78 <uw_frame_state_for+408>
+   0xf764dca1 <+449>:	movzbl 0x0(%ebp),%eax
+   0xf764dca5 <+453>:	add    $0x1,%ebp
+   0xf764dca8 <+456>:	mov    %al,0xb9(%edi)
+   0xf764dcae <+462>:	jmp    0xf764dc8f <uw_frame_state_for+431>
+   0xf764dcb0 <+464>:	mov    0x48(%eax),%ecx
+   0xf764dcb3 <+467>:	mov    0x4c(%eax),%eax
+=> 0xf764dcb6 <+470>:	cmpw   $0xb858,(%eax)
+   0xf764dcbb <+475>:	je     0xf764df32 <uw_frame_state_for+1106>
+   0xf764dcc1 <+481>:	cmpb   $0xb8,(%eax)
+   0xf764dcc4 <+484>:	je     0xf764dffb <uw_frame_state_for+1307>
+   0xf764dcca <+490>:	lea    0x0(%esi),%esi
+   0xf764dcd0 <+496>:	mov    $0x5,%eax
+   0xf764dcd5 <+501>:	add    $0x3c,%esp
+   0xf764dcd8 <+504>:	pop    %ebx
+   0xf764dcd9 <+505>:	pop    %esi
+   0xf764dcda <+506>:	pop    %edi
+   0xf764dcdb <+507>:	pop    %ebp
+   0xf764dcdc <+508>:	ret    
+   0xf764dcdd <+509>:	lea    0x0(%esi),%esi
+   0xf764dce0 <+512>:	movzbl 0x0(%ebp),%eax
+   0xf764dce4 <+516>:	add    $0x1,%ebp
+   0xf764dce7 <+519>:	mov    %al,0xb8(%edi)
+   0xf764dced <+525>:	jmp    0xf764dc8f <uw_frame_state_for+431>
+   0xf764dcef <+527>:	nop
+   0xf764dcf0 <+528>:	movzbl 0x0(%ebp),%ebx
+   0xf764dcf4 <+532>:	mov    0x8(%esp),%edx
+   0xf764dcf8 <+536>:	mov    %ebx,%eax
+   0xf764dcfa <+538>:	call   0xf764d240 <base_of_encoded_value>
+   0xf764dcff <+543>:	sub    $0xc,%esp
+   0xf764dd02 <+546>:	lea    0x1(%ebp),%ecx
+   0xf764dd05 <+549>:	mov    %eax,%edx
+   0xf764dd07 <+551>:	pushl  0x1c(%esp)
+   0xf764dd0b <+555>:	mov    %ebx,%eax
+   0xf764dd0d <+557>:	call   0xf764cd20 <read_encoded_value_with_base>
+   0xf764dd12 <+562>:	mov    %eax,%ebp
+   0xf764dd14 <+564>:	mov    0x3c(%esp),%eax
+   0xf764dd18 <+568>:	add    $0x10,%esp
+   0xf764dd1b <+571>:	mov    %eax,0xa8(%edi)
+   0xf764dd21 <+577>:	jmp    0xf764dc8f <uw_frame_state_for+431>
+Quit
+0x615f7369:	Cannot access memory at address 0x615f7369
+Undefined command: "registers".  Try "help".
+eax            0x615f7369	1633645417
+ecx            0xffffc0c0	-16192
+edx            0x0	0
+ebx            0xf7657000	-144347136
+esp            0xffffb440	0xffffb440
+ebp            0xffffb5e8	0xffffb5e8
+esi            0x40000000	1073741824
+edi            0xffffb510	-19184
+eip            0xf764dcb6	0xf764dcb6 <uw_frame_state_for+470>
+eflags         0x246	[ PF ZF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+#4  0xf764f3f8 in _Unwind_Backtrace (
+    trace=0xf7b30330 <__sanitizer::Unwind_Trace(_Unwind_Context*, void*)>, trace_argument=0xffffb608)
+    at ../../../../gcc-6.2.0/libgcc/unwind.inc:290
+290	../../../../gcc-6.2.0/libgcc/unwind.inc: No such file or directory.
+5: /x $esp = 0xffffb490
+4: x/5i $eip
+=> 0xf764f3f8 <_Unwind_Backtrace+88>:	test   %eax,%eax
+   0xf764f3fa <_Unwind_Backtrace+90>:	mov    %eax,%edi
+   0xf764f3fc <_Unwind_Backtrace+92>:	
+    je     0xf764f3d0 <_Unwind_Backtrace+48>
+   0xf764f3fe <_Unwind_Backtrace+94>:	cmp    $0x5,%eax
+   0xf764f401 <_Unwind_Backtrace+97>:	
+    je     0xf764f3d0 <_Unwind_Backtrace+48>
+3: /x $eax = 0x615f7369
+Dump of assembler code for function _Unwind_Backtrace:
+   0xf764f3a0 <+0>:	push   %ebp
+   0xf764f3a1 <+1>:	mov    %esp,%ebp
+   0xf764f3a3 <+3>:	push   %edi
+   0xf764f3a4 <+4>:	push   %esi
+   0xf764f3a5 <+5>:	push   %ebx
+   0xf764f3a6 <+6>:	lea    -0x158(%ebp),%ebx
+   0xf764f3ac <+12>:	lea    0x8(%ebp),%edx
+   0xf764f3af <+15>:	lea    -0xd8(%ebp),%esi
+   0xf764f3b5 <+21>:	sub    $0x14c,%esp
+   0xf764f3bb <+27>:	mov    0x4(%ebp),%ecx
+   0xf764f3be <+30>:	mov    %ebx,%eax
+   0xf764f3c0 <+32>:	call   0xf764eba0 <uw_init_context_1>
+   0xf764f3c5 <+37>:	jmp    0xf764f3ef <_Unwind_Backtrace+79>
+   0xf764f3c7 <+39>:	mov    %esi,%esi
+   0xf764f3c9 <+41>:	lea    0x0(%edi,%eiz,1),%edi
+   0xf764f3d0 <+48>:	sub    $0x8,%esp
+   0xf764f3d3 <+51>:	pushl  0xc(%ebp)
+   0xf764f3d6 <+54>:	push   %ebx
+   0xf764f3d7 <+55>:	call   *0x8(%ebp)
+   0xf764f3da <+58>:	add    $0x10,%esp
+   0xf764f3dd <+61>:	test   %eax,%eax
+   0xf764f3df <+63>:	jne    0xf764f403 <_Unwind_Backtrace+99>
+   0xf764f3e1 <+65>:	cmp    $0x5,%edi
+   0xf764f3e4 <+68>:	je     0xf764f408 <_Unwind_Backtrace+104>
+   0xf764f3e6 <+70>:	mov    %esi,%edx
+   0xf764f3e8 <+72>:	mov    %ebx,%eax
+   0xf764f3ea <+74>:	call   0xf764ed10 <uw_update_context>
+   0xf764f3ef <+79>:	mov    %esi,%edx
+   0xf764f3f1 <+81>:	mov    %ebx,%eax
+   0xf764f3f3 <+83>:	call   0xf764dae0 <uw_frame_state_for>
+=> 0xf764f3f8 <+88>:	test   %eax,%eax
+   0xf764f3fa <+90>:	mov    %eax,%edi
+   0xf764f3fc <+92>:	je     0xf764f3d0 <_Unwind_Backtrace+48>
+   0xf764f3fe <+94>:	cmp    $0x5,%eax
+   0xf764f401 <+97>:	je     0xf764f3d0 <_Unwind_Backtrace+48>
+   0xf764f403 <+99>:	mov    $0x3,%edi
+   0xf764f408 <+104>:	lea    -0xc(%ebp),%esp
+   0xf764f40b <+107>:	mov    %edi,%eax
+   0xf764f40d <+109>:	pop    %ebx
+   0xf764f40e <+110>:	pop    %esi
+   0xf764f40f <+111>:	pop    %edi
+   0xf764f410 <+112>:	pop    %ebp
+   0xf764f411 <+113>:	ret    
+End of assembler dump.
+eax            0x615f7369	1633645417
+ecx            0xffffc0c0	-16192
+edx            0x0	0
+ebx            0xffffb490	-19312
+esp            0xffffb490	0xffffb490
+ebp            0xffffb5e8	0xffffb5e8
+esi            0xffffb510	-19184
+edi            0x0	0
+eip            0xf764f3f8	0xf764f3f8 <_Unwind_Backtrace+88>
+eflags         0x246	[ PF ZF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+#5  0xf7b3044b in __sanitizer::BufferedStackTrace::SlowUnwindStack (
+    this=0xffffb720, pc=4155069886, max_depth=256)
+    at ../../../../../gcc-6.2.0/libsanitizer/sanitizer_common/sanitizer_unwind_linux_libcdep.cc:113
+113	../../../../../gcc-6.2.0/libsanitizer/sanitizer_common/sanitizer_unwind_linux_libcdep.cc: No such file or directory.
+5: /x $esp = 0xffffb5f0
+4: x/5i $eip
+=> 0xf7b3044b <__sanitizer::BufferedStackTrace::SlowUnwindStack(unsigned long, unsigned int)+123>:	pop    %eax
+   0xf7b3044c <__sanitizer::BufferedStackTrace::SlowUnwindStack(unsigned long, unsigned int)+124>:	pop    %edx
+   0xf7b3044d <__sanitizer::BufferedStackTrace::SlowUnwindStack(unsigned long, unsigned int)+125>:	push   %edi
+   0xf7b3044e <__sanitizer::BufferedStackTrace::SlowUnwindStack(unsigned long, unsigned int)+126>:	push   %esi
+   0xf7b3044f <__sanitizer::BufferedStackTrace::SlowUnwindStack(unsigned long, unsigned int)+127>:	
+    call   0xf7b2aad0 <__sanitizer::BufferedStackTrace::LocatePcInTrace(unsigned long)>
+3: /x $eax = 0x615f7369
+#6  0xf7b2adb6 in __sanitizer::BufferedStackTrace::Unwind (
+    this=0xffffb720, max_depth=256, pc=4155069886, bp=4294950840, 
+    context=0x0, stack_top=4294959104, stack_bottom=4286570496, 
+    request_fast_unwind=false)
+    at ../../../../../gcc-6.2.0/libsanitizer/sanitizer_common/sanitizer_stacktrace_libcdep.cc:65
+65	../../../../../gcc-6.2.0/libsanitizer/sanitizer_common/sanitizer_stacktrace_libcdep.cc: No such file or directory.
+5: /x $esp = 0xffffb620
+4: x/5i $eip
+=> 0xf7b2adb6 <__sanitizer::BufferedStackTrace::Unwind(unsigned int, unsigned long, unsigned long, void*, unsigned long, unsigned long, bool)+198>:	add    $0x10,%esp
+   0xf7b2adb9 <__sanitizer::BufferedStackTrace::Unwind(unsigned int, unsigned long, unsigned long, void*, unsigned long, unsigned long, bool)+201>:	
+    jmp    0xf7b2ad21 <__sanitizer::BufferedStackTrace::Unwind(unsigned int, unsigned long, unsigned long, void*, unsigned long, unsigned long, bool)+49>
+   0xf7b2adbe:	xchg   %ax,%ax
+   0xf7b2adc0
+     <__sanitizer::StripFunctionName(char const*, char const*)>:	push   %ebp
+   0xf7b2adc1 <__sanitizer::StripFunctionName(char const*, char const*)+1>:	push   %edi
+3: /x $eax = 0x615f7369
+#7  0xf7b13edb in __asan::GetStackTraceWithPcBpAndContext (
+    fast=false, context=0x0, bp=4294950840, pc=4155069886, 
+    max_depth=256, stack=0xffffb720)
+    at ../../../../../gcc-6.2.0/libsanitizer/asan/asan_stack.h:49
+49	../../../../../gcc-6.2.0/libsanitizer/asan/asan_stack.h: No such file or directory.
+5: /x $esp = 0xffffb640
+4: x/5i $eip
+=> 0xf7b13edb <__asan::ReportGenericError(unsigned long, unsigned long, unsigned long, unsigned long, bool, unsigned long, unsigned int, bool)+955>:	mov    -0x4c4(%ebp),%eax
+   0xf7b13ee1 <__asan::ReportGenericError(unsigned long, unsigned long, unsigned long, unsigned long, bool, unsigned long, unsigned int, bool)+961>:	add    $0x20,%esp
+   0xf7b13ee4 <__asan::ReportGenericError(unsigned long, unsigned long, unsigned long, unsigned long, bool, unsigned long, unsigned int, bool)+964>:	movb   $0x0,0x6d28(%eax)
+   0xf7b13eeb <__asan::ReportGenericError(unsigned long, unsigned long, unsigned long, unsigned long, bool, unsigned long, unsigned int, bool)+971>:	sub    $0xc,%esp
+   0xf7b13eee <__asan::ReportGenericError(unsigned long, unsigned long, unsigned long, unsigned long, bool, unsigned long, unsigned int, bool)+974>:	push   %esi
+3: /x $eax = 0x615f7369
+#8  __asan::ReportGenericError (pc=<optimized out>, 
+    bp=<optimized out>, sp=<optimized out>, addr=<optimized out>, 
+    is_write=<optimized out>, access_size=<optimized out>, 
+    exp=<optimized out>, fatal=<optimized out>)
+    at ../../../../../gcc-6.2.0/libsanitizer/asan/asan_report.cc:1092
+1092	../../../../../gcc-6.2.0/libsanitizer/asan/asan_report.cc: No such file or directory.
+#9  0xf7a955d3 in __interceptor_strchr (str=<optimized out>, 
+    c=<optimized out>)
+    at ../../../../../gcc-6.2.0/libsanitizer/asan/asan_interceptors.cc:468
+468	../../../../../gcc-6.2.0/libsanitizer/asan/asan_interceptors.cc: No such file or directory.
+5: /x $esp = 0xffffbb50
+4: x/5i $eip
+=> 0xf7a955d3 <__interceptor_strchr(char const*, int)+499>:	
+    add    $0x20,%esp
+   0xf7a955d6 <__interceptor_strchr(char const*, int)+502>:	
+    jmp    0xf7a95416 <__interceptor_strchr(char const*, int)+54>
+   0xf7a955db <__interceptor_strchr(char const*, int)+507>:	nop
+   0xf7a955dc <__interceptor_strchr(char const*, int)+508>:	
+    lea    0x0(%esi,%eiz,1),%esi
+   0xf7a955e0 <__interceptor_strchr(char const*, int)+512>:	
+    mov    -0x430(%ebp),%ecx
+3: /x $eax = 0x615f7369
+Dump of assembler code from 0xf7a9500 to 0xf7a9600:
+   0x0f7a9500:	Cannot access memory at address 0xf7a9500
+Dump of assembler code from 0xf7a95500 to 0xf7a95600:
+   0xf7a95500 <__interceptor_strchr(char const*, int)+288>:	add    %al,(%eax)
+   0xf7a95502 <__interceptor_strchr(char const*, int)+290>:	mov    %eax,-0x428(%ebp)
+   0xf7a95508 <__interceptor_strchr(char const*, int)+296>:	mov    -0x434(%ebp),%eax
+   0xf7a9550e <__interceptor_strchr(char const*, int)+302>:	movzbl 0x11(%eax),%eax
+   0xf7a95512 <__interceptor_strchr(char const*, int)+306>:	mov    %al,-0x430(%ebp)
+   0xf7a95518 <__interceptor_strchr(char const*, int)+312>:	call   0xf7b2a8c0 <__sanitizer::StackTrace::GetCurrentPc()>
+   0xf7a9551d <__interceptor_strchr(char const*, int)+317>:	mov    %eax,-0x434(%ebp)
+   0xf7a95523 <__interceptor_strchr(char const*, int)+323>:	lea    0x2e590(%ebx),%eax
+   0xf7a95529 <__interceptor_strchr(char const*, int)+329>:	movl   $0x0,-0x424(%ebp)
+   0xf7a95533 <__interceptor_strchr(char const*, int)+339>:	mov    (%eax),%eax
+   0xf7a95535 <__interceptor_strchr(char const*, int)+341>:	test   %eax,%eax
+   0xf7a95537 <__interceptor_strchr(char const*, int)+343>:	je     0xf7a955a0 <__interceptor_strchr(char const*, int)+448>
+   0xf7a95539 <__interceptor_strchr(char const*, int)+345>:	
+    call   0xf7b18c60 <__asan::GetCurrentThread()>
+   0xf7a9553e <__interceptor_strchr(char const*, int)+350>:	test   %eax,%eax
+   0xf7a95540 <__interceptor_strchr(char const*, int)+352>:	je     0xf7a95638 <__interceptor_strchr(char const*, int)+600>
+   0xf7a95546 <__interceptor_strchr(char const*, int)+358>:	cmpb   $0x0,0x6d28(%eax)
+   0xf7a9554d <__interceptor_strchr(char const*, int)+365>:	jne    0xf7a955a0 <__interceptor_strchr(char const*, int)+448>
+   0xf7a9554f <__interceptor_strchr(char const*, int)+367>:	mov    0x10(%eax),%ecx
+   0xf7a95552 <__interceptor_strchr(char const*, int)+370>:	mov    0xc(%eax),%edx
+   0xf7a95555 <__interceptor_strchr(char const*, int)+373>:	movb   $0x1,0x6d28(%eax)
+   0xf7a9555c <__interceptor_strchr(char const*, int)+380>:	mov    %eax,-0x440(%ebp)
+   0xf7a95562 <__interceptor_strchr(char const*, int)+386>:	mov    %ecx,-0x43c(%ebp)
+   0xf7a95568 <__interceptor_strchr(char const*, int)+392>:	movzbl -0x430(%ebp),%ecx
+   0xf7a9556f <__interceptor_strchr(char const*, int)+399>:	push   %ecx
+   0xf7a95570 <__interceptor_strchr(char const*, int)+400>:	pushl  -0x43c(%ebp)
+   0xf7a95576 <__interceptor_strchr(char const*, int)+406>:	push   %edx
+   0xf7a95577 <__interceptor_strchr(char const*, int)+407>:	push   $0x0
+   0xf7a95579 <__interceptor_strchr(char const*, int)+409>:	push   %ebp
+   0xf7a9557a <__interceptor_strchr(char const*, int)+410>:	pushl  -0x434(%ebp)
+   0xf7a95580 <__interceptor_strchr(char const*, int)+416>:	push   $0x100
+   0xf7a95585 <__interceptor_strchr(char const*, int)+421>:	pushl  -0x438(%ebp)
+   0xf7a9558b <__interceptor_strchr(char const*, int)+427>:	call   0xf7b2acf0 <__sanitizer::BufferedStackTrace::Unwind(unsigned int, unsigned long, unsigned long, void*, unsigned long, unsigned long, bool)>
+   0xf7a95590 <__interceptor_strchr(char const*, int)+432>:	mov    -0x440(%ebp),%eax
+   0xf7a95596 <__interceptor_strchr(char const*, int)+438>:	add    $0x20,%esp
+   0xf7a95599 <__interceptor_strchr(char const*, int)+441>:	movb   $0x0,0x6d28(%eax)
+   0xf7a955a0 <__interceptor_strchr(char const*, int)+448>:	sub    $0xc,%esp
+   0xf7a955a3 <__interceptor_strchr(char const*, int)+451>:	pushl  -0x438(%ebp)
+   0xf7a955a9 <__interceptor_strchr(char const*, int)+457>:	call   0xf7b17e60 <__asan::IsStackTraceSuppressed(__sanitizer::StackTrace const*)>
+   0xf7a955ae <__interceptor_strchr(char const*, int)+462>:	add    $0x10,%esp
+   0xf7a955b1 <__interceptor_strchr(char const*, int)+465>:	test   %al,%al
+   0xf7a955b3 <__interceptor_strchr(char const*, int)+467>:	jne    0xf7a95416 <__interceptor_strchr(char const*, int)+54>
+   0xf7a955b9 <__interceptor_strchr(char const*, int)+473>:	call   0xf7b2a8c0 <__sanitizer::StackTrace::GetCurrentPc()>
+   0xf7a955be <__interceptor_strchr(char const*, int)+478>:	push   $0x0
+   0xf7a955c0 <__interceptor_strchr(char const*, int)+480>:	push   $0x0
+   0xf7a955c2 <__interceptor_strchr(char const*, int)+482>:	push   %esi
+   0xf7a955c3 <__interceptor_strchr(char const*, int)+483>:	push   $0x0
+   0xf7a955c5 <__interceptor_strchr(char const*, int)+485>:	push   %edi
+   0xf7a955c6 <__interceptor_strchr(char const*, int)+486>:	pushl  -0x438(%ebp)
+   0xf7a955cc <__interceptor_strchr(char const*, int)+492>:	push   %ebp
+   0xf7a955cd <__interceptor_strchr(char const*, int)+493>:	push   %eax
+   0xf7a955ce <__interceptor_strchr(char const*, int)+494>:	call   0xf7b13b20 <__asan::ReportGenericError(unsigned long, unsigned long, unsigned long, unsigned long, bool, unsigned long, unsigned int, bool)>
+=> 0xf7a955d3 <__interceptor_strchr(char const*, int)+499>:	add    $0x20,%esp
+   0xf7a955d6 <__interceptor_strchr(char const*, int)+502>:	jmp    0xf7a95416 <__interceptor_strchr(char const*, int)+54>
+   0xf7a955db <__interceptor_strchr(char const*, int)+507>:	nop
+   0xf7a955dc <__interceptor_strchr(char const*, int)+508>:	lea    0x0(%esi,%eiz,1),%esi
+   0xf7a955e0 <__interceptor_strchr(char const*, int)+512>:	mov    -0x430(%ebp),%ecx
+   0xf7a955e6 <__interceptor_strchr(char const*, int)+518>:	sub    $0x1,%ecx
+   0xf7a955e9 <__interceptor_strchr(char const*, int)+521>:	mov    %ecx,%eax
+   0xf7a955eb <__interceptor_strchr(char const*, int)+523>:	shr    $0x3,%eax
+   0xf7a955ee <__interceptor_strchr(char const*, int)+526>:	movsbl 0x20000000(%eax),%eax
+   0xf7a955f5 <__interceptor_strchr(char const*, int)+533>:	test   %al,%al
+   0xf7a955f7 <__interceptor_strchr(char const*, int)+535>:	je     0xf7a95608 <__interceptor_strchr(char const*, int)+552>
+   0xf7a955f9 <__interceptor_strchr(char const*, int)+537>:	and    $0x7,%ecx
+   0xf7a955fc <__interceptor_strchr(char const*, int)+540>:	cmp    %eax,%ecx
+   0xf7a955fe <__interceptor_strchr(char const*, int)+542>:	jge    0xf7a95497 <__interceptor_strchr(char const*, int)+183>
+End of assembler dump.
+5: /x $esp = 0xffffbb50
+4: x/5i $eip
+=> 0xf7a955d3 <__interceptor_strchr(char const*, int)+499>:	
+    add    $0x20,%esp
+   0xf7a955d6 <__interceptor_strchr(char const*, int)+502>:	
+    jmp    0xf7a95416 <__interceptor_strchr(char const*, int)+54>
+   0xf7a955db <__interceptor_strchr(char const*, int)+507>:	nop
+   0xf7a955dc <__interceptor_strchr(char const*, int)+508>:	
+    lea    0x0(%esi,%eiz,1),%esi
+   0xf7a955e0 <__interceptor_strchr(char const*, int)+512>:	
+    mov    -0x430(%ebp),%ecx
+3: /x $eax = 0x615f7369
+eax            0x615f7369	1633645417
+ecx            0xffffc0c0	-16192
+edx            0x0	0
+ebx            0xf7b81000	-138932224
+esp            0xffffbb50	0xffffbb50
+ebp            0xffffbfb8	0xffffbfb8
+esi            0x39e	926
+edi            0xffffc064	-16284
+eip            0xf7a955d3	0xf7a955d3 <__interceptor_strchr(char const*, int)+499>
+eflags         0x246	[ PF ZF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+0xffffbb50:	0xf7a955be
+0x615f7369:	Cannot access memory at address 0x615f7369
+#10 0x0804eb77 in read_config (filename=<optimized out>)
+    at thttpd.c:1018
+1018		if ( ( cp = strchr( line, '#' ) ) != (char*) 0 )
+5: /x $esp = 0xffffbfc0
+4: x/5i $eip
+=> 0x804eb77 <read_config+183>:	add    $0x10,%esp
+   0x804eb7a <read_config+186>:	test   %eax,%eax
+   0x804eb7c <read_config+188>:	je     0x804eb9e <read_config+222>
+   0x804eb7e <read_config+190>:	mov    %eax,%edx
+   0x804eb80 <read_config+192>:	mov    %eax,%ecx
+3: /x $eax = 0x615f7369
+Dump of assembler code for function read_config:
+   0x0804eac0 <+0>:	push   %ebp
+   0x0804eac1 <+1>:	push   %edi
+   0x0804eac2 <+2>:	push   %esi
+   0x0804eac3 <+3>:	push   %ebx
+   0x0804eac4 <+4>:	mov    %eax,%ebx
+   0x0804eac6 <+6>:	sub    $0xdc,%esp
+   0x0804eacc <+12>:	lea    0x10(%esp),%eax
+   0x0804ead0 <+16>:	mov    %eax,(%esp)
+   0x0804ead3 <+19>:	mov    0x80877c8,%eax
+   0x0804ead8 <+24>:	test   %eax,%eax
+   0x0804eada <+26>:	jne    0x804f245 <read_config+1925>
+   0x0804eae0 <+32>:	mov    (%esp),%edi
+   0x0804eae3 <+35>:	sub    $0x8,%esp
+   0x0804eae6 <+38>:	mov    %edi,%eax
+   0x0804eae8 <+40>:	movl   $0x41b58ab3,(%edi)
+   0x0804eaee <+46>:	movl   $0x80695be,0x4(%edi)
+   0x0804eaf5 <+53>:	shr    $0x3,%eax
+   0x0804eaf8 <+56>:	movl   $0x804eac0,0x8(%edi)
+   0x0804eaff <+63>:	mov    %eax,0x14(%esp)
+   0x0804eb03 <+67>:	movl   $0xf1f1f1f1,0x20000000(%eax)
+   0x0804eb0d <+77>:	movl   $0xf4f4f404,0x20000010(%eax)
+   0x0804eb17 <+87>:	movl   $0xf3f3f3f3,0x20000014(%eax)
+   0x0804eb21 <+97>:	push   $0x8067460
+   0x0804eb26 <+102>:	push   %ebx
+   0x0804eb27 <+103>:	call   0x804a0a0 <fopen@plt>
+   0x0804eb2c <+108>:	mov    %eax,0x18(%esp)
+   0x0804eb30 <+112>:	add    $0x10,%esp
+   0x0804eb33 <+115>:	test   %eax,%eax
+   0x0804eb35 <+117>:	je     0x804f22b <read_config+1899>
+   0x0804eb3b <+123>:	mov    %edi,%eax
+   0x0804eb3d <+125>:	mov    $0x800013,%esi
+   0x0804eb42 <+130>:	add    $0x20,%eax
+   0x0804eb45 <+133>:	mov    %eax,0x4(%esp)
+   0x0804eb49 <+137>:	sub    $0x4,%esp
+   0x0804eb4c <+140>:	pushl  0xc(%esp)
+   0x0804eb50 <+144>:	push   $0x3e8
+   0x0804eb55 <+149>:	pushl  0x10(%esp)
+   0x0804eb59 <+153>:	call   0x8049f30 <fgets@plt>
+   0x0804eb5e <+158>:	add    $0x10,%esp
+   0x0804eb61 <+161>:	test   %eax,%eax
+   0x0804eb63 <+163>:	je     0x804f143 <read_config+1667>
+   0x0804eb69 <+169>:	sub    $0x8,%esp
+   0x0804eb6c <+172>:	push   $0x23
+   0x0804eb6e <+174>:	pushl  0x10(%esp)
+   0x0804eb72 <+178>:	call   0x804a4b0 <strchr@plt>
+=> 0x0804eb77 <+183>:	add    $0x10,%esp
+   0x0804eb7a <+186>:	test   %eax,%eax
+   0x0804eb7c <+188>:	je     0x804eb9e <read_config+222>
+   0x0804eb7e <+190>:	mov    %eax,%edx
+   0x0804eb80 <+192>:	mov    %eax,%ecx
+   0x0804eb82 <+194>:	shr    $0x3,%edx
+   0x0804eb85 <+197>:	and    $0x7,%ecx
+   0x0804eb88 <+200>:	movzbl 0x20000000(%edx),%edx
+   0x0804eb8f <+207>:	cmp    %cl,%dl
+   0x0804eb91 <+209>:	jg     0x804eb9b <read_config+219>
+   0x0804eb93 <+211>:	test   %dl,%dl
+   0x0804eb95 <+213>:	jne    0x804f263 <read_config+1955>
+   0x0804eb9b <+219>:	movb   $0x0,(%eax)
+   0x0804eb9e <+222>:	sub    $0x8,%esp
+   0x0804eba1 <+225>:	push   $0x80674a0
+   0x0804eba6 <+230>:	mov    0x10(%esp),%edi
+   0x0804ebaa <+234>:	push   %edi
+   0x0804ebab <+235>:	call   0x804a5b0 <strspn@plt>
+   0x0804ebb0 <+240>:	add    %eax,%edi
+   0x0804ebb2 <+242>:	add    $0x10,%esp
+   0x0804ebb5 <+245>:	mov    %edi,%eax
+   0x0804ebb7 <+247>:	mov    %edi,%edx
+   0x0804ebb9 <+249>:	shr    $0x3,%eax
+   0x0804ebbc <+252>:	and    $0x7,%edx
+   0x0804ebbf <+255>:	movzbl 0x20000000(%eax),%eax
+   0x0804ebc6 <+262>:	cmp    %dl,%al
+   0x0804ebc8 <+264>:	jg     0x804ebd8 <read_config+280>
+   0x0804ebca <+266>:	test   %al,%al
+   0x0804ebcc <+268>:	jne    0x804f26c <read_config+1964>
+   0x0804ebd2 <+274>:	lea    0x0(%esi),%esi
+   0x0804ebd8 <+280>:	cmpb   $0x0,(%edi)
+   0x0804ebdb <+283>:	je     0x804eb49 <read_config+137>
+   0x0804ebe1 <+289>:	sub    $0x8,%esp
+   0x0804ebe4 <+292>:	push   $0x80674a0
+   0x0804ebe9 <+297>:	push   %edi
+   0x0804ebea <+298>:	call   0x804a240 <strcspn@plt>
+   0x0804ebef <+303>:	lea    (%edi,%eax,1),%ebx
+   0x0804ebf2 <+306>:	add    $0x10,%esp
+   0x0804ebf5 <+309>:	mov    %ebx,%eax
+   0x0804ebf7 <+311>:	mov    %ebx,%edx
+   0x0804ebf9 <+313>:	shr    $0x3,%eax
+   0x0804ebfc <+316>:	and    $0x7,%edx
+   0x0804ebff <+319>:	movzbl 0x20000000(%eax),%eax
+   0x0804ec06 <+326>:	cmp    %dl,%al
+Quit
+eax            0x615f7369	1633645417
+ecx            0xffffc0c0	-16192
+edx            0x0	0
+ebx            0xffffd5fd	-10755
+esp            0xffffbfc0	0xffffbfc0
+ebp            0xffffd444	0xffffd444
+esi            0x800013	8388627
+edi            0xffffbfe0	-16416
+eip            0x804eb77	0x804eb77 <read_config+183>
+eflags         0x246	[ PF ZF IF ]
+cs             0x23	35
+ss             0x2b	43
+ds             0x2b	43
+es             0x2b	43
+fs             0x0	0
+gs             0x63	99
+0x804eb77 <read_config+183>:	0x8510c483
+0x615f7369:	Cannot access memory at address 0x615f7369
