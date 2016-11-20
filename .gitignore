@@ -1,0 +1,5 @@
+* *
+*.tgz
+*.exe
+sthttpd-2.27.0/*
+*.tar.gz
